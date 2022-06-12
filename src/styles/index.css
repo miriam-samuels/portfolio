@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600&display=swap");
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+header #header {
+  padding: 2em;
+}
+
+header #header .logo img {
+  width: 100px;
+}
+
+@media (max-width: 600px) {
+  header #header {
+    padding: 1em;
+  }
+}
+
+#hero {
+  position: relative;
+  width: 100%;
+}
+
+#hero .hero {
+  position: relative;
+  width: 100%;
+}
+
+#hero .hero-orbital {
+  position: absolute;
+  right: -10%;
+  bottom: 10%;
+}
+
+#hero .hero-text {
+  width: 50%;
+}
+
+#hero .hero-text h4 {
+  font-family: 'Open Sans', sans-serif;
+  margin-bottom: 0;
+}
+
+#hero .hero-text p {
+  font-weight: 500;
+  line-height: 2;
+}
+
+#hero .hero-text hr {
+  height: 5px;
+  width: 200px;
+  margin: 1.5em 0;
+  align-self: flex-start;
+  border: none;
+  background-image: linear-gradient(to right, orange, green, #0593ff, violet);
+}
+
+#hero .hero-contact {
+  display: flex;
+  align-items: center;
+}
+
+#hero .hero-contact img {
+  width: 30px;
+  height: 30px;
+  margin: 0em 0.5em;
+}
+
+#hero .hero-contact img:first-child {
+  height: 26px;
+  margin-left: 0;
+}
+
+@media (max-width: 600px) {
+  #hero .hero-orbital {
+    width: 100px;
+    position: absolute;
+    right: -10%;
+    bottom: 0%;
+    z-index: -1;
+  }
+  #hero .hero-text {
+    width: 90%;
+  }
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+  color: #cbcbcb;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #0d0d0c;
+  background-image: url("../images/galaxy.jpg");
+  background-size: contain;
+}
+
+.cover {
+  position: relative;
+  max-width: 1500px;
+  margin: auto;
+  overflow-x: hidden;
+}
+
+section {
+  padding: 2em 4em;
+  background-image: url("../images/galaxy.jpg");
+  background-size: cover;
+}
+
+h1 {
+  margin: 1px 0;
+  font-size: 4rem;
+}
+
+.orbital {
+  animation: spin infinite 20s linear;
+}
+
+@media (max-width: 600px) {
+  section {
+    padding: 1em;
+  }
+  h1 {
+    margin: 1px 0;
+    font-size: 2rem;
+  }
+}

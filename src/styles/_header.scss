@@ -1,0 +1,15 @@
+header {
+    #header {
+        padding: 2em;
+        .logo {
+            img {
+                width: 100px;
+            }
+        }
+        @media (max-width: 600px) {
+            padding: 1em;
+        }
+    }
+
+
+}

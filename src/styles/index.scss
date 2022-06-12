@@ -1,0 +1,43 @@
+@import "./colors";
+@import "./_animation";
+@import "./_header";
+@import "./_landing.scss";
+
+//fonts
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600&display=swap');
+body{
+    width: 100%;
+    overflow-x: hidden;
+    color: $light;
+    font-family: 'Montserrat', sans-serif;
+    background-color : $black;
+    background-image: url('../images/galaxy.jpg');
+    background-size: contain;
+}
+.cover{
+    position: relative;
+    max-width: 1500px;
+    margin: auto;
+    overflow-x: hidden;
+}
+section{
+    padding: 2em 4em;
+    background-image: url('../images/galaxy.jpg');
+    background-size: cover;
+}
+h1{
+    margin: 1px 0;
+    font-size: 4rem;
+}
+.orbital{
+    animation: spin infinite 20s linear;
+}
+@media (max-width: 600px) {
+    section{
+        padding: 1em;
+    }
+    h1{
+        margin: 1px 0;
+        font-size: 2rem;
+    }
+}

@@ -1,0 +1,72 @@
+#hero {
+    position: relative;
+    width: 100%;
+
+    .hero {
+        position: relative;
+        width: 100%;
+
+        &-orbital {
+            position: absolute;
+            right: -10%;
+            bottom: 10%;
+        }
+
+        &-text {
+            width: 50%;
+
+            h4 {
+                font-family: 'Open Sans', sans-serif;
+                margin-bottom: 0;
+            }
+
+            p {
+                font-weight: 500;
+                // font-size: 14px;
+                line-height: 2;
+            }
+
+            hr {
+                height: 5px;
+                width: 200px;
+                margin: 1.5em 0;
+                align-self: flex-start;
+                border: none;
+                background-image: linear-gradient(to right, orange, green, #0593ff, violet)
+            }
+        }
+
+        &-contact {
+            display: flex;
+            align-items: center;
+
+            img {
+                width: 30px;
+                height: 30px;
+                margin: 0em 0.5em;
+
+                &:first-child {
+                    height: 26px;
+                    margin-left: 0;
+                }
+
+            }
+        }
+    }
+
+    @media (max-width:600px) {
+        .hero {
+            &-orbital {
+                width: 100px;
+                position: absolute;
+                right: -10%;
+                bottom: 0%;
+                z-index: -1;
+            }
+
+            &-text {
+                width: 90%;
+            }
+        }
+    }
+}
