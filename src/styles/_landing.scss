@@ -1,23 +1,29 @@
 #hero {
     position: relative;
     width: 100%;
-
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    // justify-content: center;
     .hero {
         position: relative;
         width: 100%;
+        // font-family: "Calibre","Inter","San Francisco","SF Pro Text",-apple-system,system-ui,sans-serif;
 
         &-orbital {
+            width: 40%;
             position: absolute;
-            right: -10%;
-            bottom: 10%;
+            right: -18%;
+            top: -10%;
         }
 
         &-text {
-            width: 50%;
+            width: 60%;
 
             h4 {
                 font-family: 'Open Sans', sans-serif;
                 margin-bottom: 0;
+                letter-spacing: 3px;
             }
 
             p {
@@ -36,22 +42,7 @@
             }
         }
 
-        &-contact {
-            display: flex;
-            align-items: center;
-
-            img {
-                width: 30px;
-                height: 30px;
-                margin: 0em 0.5em;
-
-                &:first-child {
-                    height: 26px;
-                    margin-left: 0;
-                }
-
-            }
-        }
+        
     }
 
     @media (max-width:600px) {
@@ -59,7 +50,7 @@
             &-orbital {
                 width: 100px;
                 position: absolute;
-                right: -10%;
+                right: 0%;
                 bottom: 0%;
                 z-index: -1;
             }
@@ -67,6 +58,19 @@
             &-text {
                 width: 90%;
             }
+        }
+    }
+}
+
+#skills{
+    .skills{
+        text-align: center;
+        &--heading{
+            margin-bottom: 3em;
+        }
+        &--body{
+            display: flex;
+            justify-content: center;
         }
     }
 }
