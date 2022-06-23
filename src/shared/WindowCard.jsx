@@ -1,8 +1,8 @@
 import React from 'react'
 
-function WindowCard() {
+function WindowCard(props) {
   return (
-    <div className="window-card">
+    <div className={`window-card wow slideInUp ${props.className}`}  >
         <div className="card--heading">
              <div className="card--actions">
                  <span></span>
@@ -10,8 +10,11 @@ function WindowCard() {
                  <span></span>
              </div>
              <div className="card--title">
-
+               <h5>{props.title}</h5>
              </div>
+        </div>
+        <div className="card--body">
+            {props.children}
         </div>
     </div>
   )
