@@ -5,7 +5,7 @@ function FolderCard(props) {
   return (
     <div className="folder-card wow slideInUp">
       <div className="card--actions">
-        <img src={IMAGE.FOLDER} />
+        <img src={IMAGE.FOLDER} alt="folder"/>
       </div>
       <div className="card--body">
         {props.children}

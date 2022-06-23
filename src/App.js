@@ -1,7 +1,6 @@
 import './styles/index.css';
 import Landing from './views/landing';
-import { useEffect, useRef } from 'react';
-import * as IMAGES from "./shared/images";
+import { useRef } from 'react';
 // function sketch(p) {
 
 //   let xoff1 = 0;
