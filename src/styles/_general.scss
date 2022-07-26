@@ -72,9 +72,13 @@ button {
 
 section {
     padding: 0em 4em;
-    min-height: 85vh;
+    min-height: 77.5vh;
     display: flex;
     align-items: center;
+}
+
+a {
+    z-index: 1;
 }
 
 // footer {
@@ -152,8 +156,9 @@ h1 {
     transition-duration: .3s;
     transition-timing-function: ease-in;
     width: 360px;
-    min-width: 280px;
-    min-height: 300px;
+    // max-width: 300px;
+    // min-width: 260px;
+    height: 355px;
     margin: 1em;
     border-radius: 10px;
     background-color: rgb(15, 25, 48);
@@ -175,7 +180,8 @@ h1 {
 
         &--title {
             text-align: center;
-            width: 80%;
+            margin-left: 2em;
+            // width: 80%;
 
             & h5 {
                 margin: 0;
@@ -183,7 +189,7 @@ h1 {
         }
 
         &--actions {
-            width: fit-content;
+            width: 53px;
             text-align: left;
 
             span {
@@ -214,15 +220,16 @@ h1 {
 
             h5 {
                 margin: 10px 0;
-                // font-size: 15px;
+
+                &.primary {
+                    margin: 0 0 10px 0;
+                }
             }
 
             span {
                 font-size: 13px;
                 font-weight: 500;
                 display: inline-block;
-                margin: 5px 0;
-                padding: 0 3px;
             }
         }
     }
@@ -230,8 +237,10 @@ h1 {
 
 .folder-card {
     box-shadow: 3px 3px 5px 2px black;
-    width: 300px;
-    min-height: 260px;
+    // width: 300px;
+    min-height: 235px;
+    min-width: 215px;
+    max-width: 300px;
     margin: 1em;
     border-radius: 10px;
     background-color: rgb(15, 25, 48);
@@ -269,10 +278,12 @@ h1 {
 
 .contact {
     width: 100%;
+
     &--body {
         display: flex;
         align-items: flex-start;
         flex-direction: row;
+
         div {
             width: 60%;
 
@@ -291,9 +302,11 @@ h1 {
     }
 
 }
+
 @media (max-width: 1100px) {
     .general--heading {
         margin-bottom: 1em;
+
         hr {
             width: 200px;
 
@@ -360,4 +373,110 @@ h1 {
         }
 
     }
+}
+
+.human {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+    .head {
+        position: relative;
+        display: flex;
+        // align-items: center;
+        justify-content: flex-end;
+        width: 150px !important;
+        height: 100px;
+        border-radius: 50%;
+        background-color: rgb(88, 55, 55);
+        position: relative;
+
+
+        span {
+            display: block;
+            width: 10px;
+            height: 10px;
+            background-color: black;
+            border-radius: 50%;
+            margin: 2em 1em 0 1em;
+
+        }
+
+        &::after {
+            content: "";
+            width: 45px;
+            height: 20px;
+            // background-color: transparent;
+            border-top: 2px solid rgb(88, 55, 55);
+            border-left: 2px solid rgb(88, 55, 55);
+            border-right: 2px solid rgb(88, 55, 55);
+            border-bottom: 3px solid rgb(181, 96, 96);
+            border-radius: 100%;
+            position: absolute;
+            bottom: 25%;
+            right: 15%;
+            z-index: 2;
+        }
+    }
+
+    .body {
+        position: relative;
+        width: 20px;
+        height: 100px;
+        background-color: rgb(88, 55, 55);
+
+        &::after {
+            content: "";
+            width: 10px;
+            height: 150px;
+            background-color: rgb(88, 55, 55);
+            position: absolute;
+            top: 10%;
+            right: 300%;
+            transform: rotate(60deg);
+        }
+        &::before {
+            content: "";
+            width: 10px;
+            height: 150px;
+            background-color: rgb(88, 55, 55);
+            position: absolute;
+            top: -40%;
+            right: -300%;
+            transform: rotate(70deg);
+        }
+    }
+    .legs {
+        position: relative;
+        width: 20px;
+        height: 115px;
+        background-color: rgb(88, 55, 55);
+
+        &::after {
+            content: "";
+            width: 10px;
+            height: 150px;
+            background-color: rgb(88, 55, 55);
+            position: absolute;
+            bottom: -90%;
+            right: 300%;
+            transform: rotate(60deg);
+        }
+        &::before {
+            content: "";
+            width: 10px;
+            height: 150px;
+            background-color: rgb(88, 55, 55);
+            position: absolute;
+            bottom: -100%;
+            right: -200%;
+            transform: rotate(140deg);
+        }
+    }
+}
+h1.girl{
+    font-size: 300px;
+    transform: scaleX(-1)
 }

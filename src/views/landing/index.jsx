@@ -1,16 +1,17 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import FolderCard from '../../shared/FolderCard'
 import * as IMAGE from '../../shared/images'
+import * as DATALIST from '../../shared/datalist'
 import TheLayout from '../../shared/TheLayout'
 import WindowCard from '../../shared/WindowCard'
 import WOW from "wowjs"
 function Landing() {
+    const [view, setView] = useState(6)
     useEffect(() => {
         new WOW.WOW({
             live: false
         }).init();
     }, [])
-
     return (
         <TheLayout>
             <Fragment>
@@ -21,7 +22,7 @@ function Landing() {
                             <h1>Miriam Medo</h1>
                             <h2>I build scalable products</h2>
                             <p>
-                                I am a goal-oriented software engineer team player that is enthusiastic about technology, education, community building, growth, and problem-solving. I combine my interest for technology and problem solving with teaching and volunteering at communities and organizations.
+                                I am a goal-oriented software engineer & team player. I'm enthusiastic about technology, education, community building, growth, and problem-solving. I combine my interest for technology and problem solving with teaching and volunteering at communities and organizations. Building state of the art, user friendly applications is truly a passion of mine!!!
                             </p>
                             <hr />
                             <div>
@@ -51,33 +52,35 @@ function Landing() {
                                     </div>
                                 </Fragment>
                             </WindowCard>
-                            <WindowCard title="Hard Skills" className="grid-item2 active">
+                            <WindowCard title="Hard Skills" className="grid-item2">
                                 <Fragment>
-                                    <div>
-                                        <h5>Primary Technologies</h5>
-                                        <span>React.js</span>•
-                                        <span>HTML</span>•
-                                        <span>CSS</span>•
-                                        <span>SCSS</span>•
-                                        <span>Tailwind</span>•
-                                        <span>Bootstrap</span>•
-                                        <span>Rest Apis</span>•
-                                        <span>Graphql</span>•
+                                    <div className="hard-skill">
+                                        <h5 className="primary">Primary Technologies</h5>
+                                        <span>React</span>
+                                        <span>Typescript</span>
+                                        <span>Angular</span>
+                                        <span>HTML</span>
+                                        <span>CSS</span>
+                                        <span>SCSS</span>
+                                        <span>Tailwind</span>
+                                        <span>Bootstrap</span>
+                                        <span>Firebase</span>
+                                        <span>Graphql</span>
+                                        <span>SQL</span>
+                                        <span>Rest Apis</span>
                                     </div>
-                                    <div>
+                                    <div className="hard-skill">
                                         <h5>Occasionally used</h5>
-                                        <span>React Native</span>•
-                                        <span>Typescript</span>•
-                                        <span>Angular</span>•
-                                        <span>Firebase</span>•
+                                        <span>React Native</span>
                                     </div>
-                                    <div>
+                                    <div className="hard-skill">
                                         <h5>Exposed to</h5>
-                                        <span>Redux</span>•
+                                        <span>Redux</span>
+                                        <span>Solana web3js</span>
                                     </div>
-                                    <div>
+                                    <div className="hard-skill">
                                         <h5>Others</h5>
-                                        <span>Data structures and algorithm</span>•
+                                        <span>Data structures and algorithm</span>
                                     </div>
                                 </Fragment>
                             </WindowCard>
@@ -103,62 +106,39 @@ function Landing() {
                             <hr />
                         </div>
                         <div className="projects--body">
-                            <FolderCard>
-                                <h3>Multi-tenant Core Banking Application</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing . Ut enim ad minim veniam, quis nostrud </p>
-                                <div>
+                            {
+                                DATALIST?.featuredProjects?.slice(0, view)?.map((item, index) => (
+                                    <FolderCard key={index}>
+                                        <h3>{item.name}</h3>
+                                        <p>{item.description}</p>
+                                        {/* <div>
                                     <span>React</span>•
                                     <span>Redux</span>•
                                     <span>SCSS</span>•
                                     <span>Graphql</span>•
-                                </div>
-                            </FolderCard>
-                            <FolderCard>
-                                <h3>CMMS Application</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing . Ut enim ad minim veniam, quis nostrud </p>
-                                <div>
-                                    <span>React</span>•
-                                    <span>Context Api</span>•
-                                    <span>SCSS</span>•
-                                    <span>Rest APIs</span>•
-                                </div> </FolderCard>
-                            <FolderCard>
-                                <h3>NFT Marketplace</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing . Ut enim ad minim veniam, quis nostrud </p>
-                                <div>
-                                    <span>React</span>•
-                                    <span>Typescript</span>•
-                                    <span>Context Api</span>•
-                                    <span>SCSS</span>•
-                                    <span>Graphql</span>•
-                                </div>
-                            </FolderCard>
-                            <FolderCard>
-                                <h3>E-learning Platform</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing . Ut enim ad minim veniam, quis nostrud </p>
-                                <div>
-                                    <span>React</span>•
-                                    <span>Typescript</span>•
-                                    <span>Context Api</span>•
-                                    <span>SCSS</span>•
-                                    <span>Graphql</span>•
-                                </div>
-                            </FolderCard>
-                            <FolderCard>
-                                <h3>Business Mabagement Platform</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing . Ut enim ad minim veniam, quis nostrud </p>
-                                <div>
-                                    <span>Angular</span>•
-                                    <span>Typescript</span>•
-                                    <span>SCSS</span>•
-                                    <span>Rest APIs</span>•
-                                </div>
-                            </FolderCard>
-                            <FolderCard>
-                                <h3>Ecommerce</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing . Ut enim ad minim veniam, quis nostrud </p>
-                            </FolderCard>
+                                </div> */}
+                                    </FolderCard>
+                                ))
+                            }
+
+
                         </div>
+                        <div className="view-btn">
+                            {
+                                view > 6 &&
+                                <button className="view-more" onClick={() => setView(current => current - 3)}>
+                                    View Less
+                                </button>
+                            }
+                            {
+                                view < DATALIST?.featuredProjects?.length &&
+                                <button className="view-more" onClick={() => setView(current => current + 3)}>
+                                    View More
+                                </button>
+                            }
+
+                        </div>
+
                     </div>
                 </section>
                 {/* <section id="experience">
@@ -181,10 +161,23 @@ function Landing() {
                             <div>
                                 <h1>GET IN TOUCH</h1>
                                 <p>Hello there , you can pop me a mail using medomiriam@gmail.com</p>
-
+                                <br />
+                               
+                                <div className="human wow fadeIn" data-wow-delay=".5s">
+                                <div className="head"><span></span> <span></span></div>
+                                <div className="body"></div>
+                                <div className="legs"></div>
+                                </div>
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <h3 className="wow slideInLeft" data-wow-delay=".5s">See Ya, off to work I go ------x</h3>
+                             {/* <h1 className="girl wow slideInLeft" data-wow-delay=".5s">🏃🏾‍♀️</h1> */}
                             </div>
                             <div>
-                                <img src={IMAGE.WORKSPACE} alt=""/>
+                                <img src={IMAGE.WORKSPACE} alt="" />
                             </div>
                         </div>
                     </div>
@@ -208,7 +201,7 @@ function Landing() {
                                 </a>
                             </li>
                             <li title="@your_fave_techy">
-                                <a href="https://twitter.com/your_fave_techy" aria-label="Twitter" target="_blank" rel="noreferrer">
+                                <a href="https://twitter.com/bricks_nd_codes" aria-label="Twitter" target="_blank" rel="noreferrer">
                                     <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="#c1cbf3eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><title>Twitter</title><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
                                     </svg>
                                 </a>

@@ -26,8 +26,8 @@ function App() {
   // const p5ContainerRef = useRef();
   const cursorRef = useRef()
   document.addEventListener('mousemove', e => {
-    console.log(e)
-    cursorRef.current.setAttribute("style", "top: " + (e.pageY - 10) + "px; left :" + (e.pageX - 10) + "px")
+    cursorRef.current.setAttribute("style", "top: " + (e.pageY - -3) + "px; left :" + (e.pageX - -3) + "px")
+    // 10 perfect center
   })
   document.addEventListener('click', e => {
     cursorRef.current.classList.add("expand");
