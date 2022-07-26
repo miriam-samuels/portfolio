@@ -123,6 +123,22 @@ h1 {
         }
     }
 }
+.contact-me-horizontal{
+    ul {
+        list-style: none;
+        padding-left: 10px;
+        display: flex;
+        flex-direction: row;
+
+        li {
+            margin-right: 1em;
+
+            svg {
+                width: 20px;
+            }
+        }
+    }
+}
 
 .general--heading {
     margin-bottom: 3em;
@@ -296,7 +312,8 @@ h1 {
             }
 
             img {
-                max-width: 600px;
+                // max-width: 600px;
+                width: 100%;
             }
         }
     }
