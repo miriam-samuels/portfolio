@@ -1,0 +1,291 @@
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.5);
+  }
+  50% {
+    transform: scale(2);
+  }
+  75% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes fadeIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0.3;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes cursoranim {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.7);
+  }
+}
+@keyframes cursoranim2 {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.4);
+  }
+}
+@keyframes cursoranim3 {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+#portfolio-form {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+#portfolio-form::after {
+  content: "";
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  display: block;
+  background-image: url(../../images/portfolio-form/galaxy.jpg);
+  animation: zoom;
+  animation-duration: 60s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  z-index: -1;
+}
+#portfolio-form .signup,
+#portfolio-form .form-box--con {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+#portfolio-form .signup form,
+#portfolio-form .signup .form-box,
+#portfolio-form .form-box--con form,
+#portfolio-form .form-box--con .form-box {
+  background-color: #0a1323;
+  border: 1px solid rgba(193, 203, 243, 0.1764705882);
+  width: 400px;
+  color: #c1cbf3;
+  padding: 2em;
+  border-radius: 10px;
+  animation: fadeIn;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+}
+#portfolio-form .signup form .flex-heading,
+#portfolio-form .signup .form-box .flex-heading,
+#portfolio-form .form-box--con form .flex-heading,
+#portfolio-form .form-box--con .form-box .flex-heading {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+#portfolio-form .signup form .flex-heading h4,
+#portfolio-form .signup .form-box .flex-heading h4,
+#portfolio-form .form-box--con form .flex-heading h4,
+#portfolio-form .form-box--con .form-box .flex-heading h4 {
+  width: 160px;
+}
+#portfolio-form .signup form .flex-heading div,
+#portfolio-form .signup .form-box .flex-heading div,
+#portfolio-form .form-box--con form .flex-heading div,
+#portfolio-form .form-box--con .form-box .flex-heading div {
+  width: 100%;
+  text-align: right;
+}
+#portfolio-form .signup form button,
+#portfolio-form .signup .form-box button,
+#portfolio-form .form-box--con form button,
+#portfolio-form .form-box--con .form-box button {
+  border: none;
+  background-color: transparent;
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0 5px;
+}
+#portfolio-form .signup form p,
+#portfolio-form .signup .form-box p,
+#portfolio-form .form-box--con form p,
+#portfolio-form .form-box--con .form-box p {
+  color: rgba(193, 203, 243, 0.6745098039);
+  margin: 4px 0;
+}
+#portfolio-form .signup form label,
+#portfolio-form .signup .form-box label,
+#portfolio-form .form-box--con form label,
+#portfolio-form .form-box--con .form-box label {
+  color: #c1cbf3;
+  margin: 2em 0 0.5em 0;
+}
+#portfolio-form .signup form h1,
+#portfolio-form .signup .form-box h1,
+#portfolio-form .form-box--con form h1,
+#portfolio-form .form-box--con .form-box h1 {
+  color: #c1cbf3;
+}
+#portfolio-form .signup form .heading,
+#portfolio-form .signup .form-box .heading,
+#portfolio-form .form-box--con form .heading,
+#portfolio-form .form-box--con .form-box .heading {
+  margin-bottom: 1em;
+}
+#portfolio-form .signup form .form-group input,
+#portfolio-form .signup .form-box .form-group input,
+#portfolio-form .form-box--con form .form-group input,
+#portfolio-form .form-box--con .form-box .form-group input {
+  box-sizing: border-box;
+  background-color: transparent;
+  border: 1px solid rgba(193, 203, 243, 0.1764705882);
+  height: 46px;
+  border-radius: 7px;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  font-size: 1rem;
+  width: 100%;
+  color: #c1cbf3;
+  outline: 0px;
+}
+#portfolio-form .signup form .form-group button,
+#portfolio-form .signup .form-box .form-group button,
+#portfolio-form .form-box--con form .form-group button,
+#portfolio-form .form-box--con .form-box .form-group button {
+  border: none;
+  background-color: transparent;
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0 5px;
+}
+#portfolio-form .signup form .flex-input-group,
+#portfolio-form .signup .form-box .flex-input-group,
+#portfolio-form .form-box--con form .flex-input-group,
+#portfolio-form .form-box--con .form-box .flex-input-group {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 20px;
+}
+#portfolio-form .signup form .input-group label,
+#portfolio-form .signup .form-box .input-group label,
+#portfolio-form .form-box--con form .input-group label,
+#portfolio-form .form-box--con .form-box .input-group label {
+  display: block;
+  margin: 10px 0;
+}
+#portfolio-form .signup form .input-group input,
+#portfolio-form .signup form .input-group textarea,
+#portfolio-form .signup .form-box .input-group input,
+#portfolio-form .signup .form-box .input-group textarea,
+#portfolio-form .form-box--con form .input-group input,
+#portfolio-form .form-box--con form .input-group textarea,
+#portfolio-form .form-box--con .form-box .input-group input,
+#portfolio-form .form-box--con .form-box .input-group textarea {
+  display: block;
+  background-color: transparent;
+  border: 1px solid rgba(162, 181, 253, 0.4235294118);
+  box-sizing: border-box;
+  height: 46px;
+  border-radius: 7px;
+  padding: 0 1em;
+  font-size: 1rem;
+  width: 100%;
+  color: #c1cbf3;
+  margin: 10px 0;
+}
+#portfolio-form .signup form .input-group textarea,
+#portfolio-form .signup .form-box .input-group textarea,
+#portfolio-form .form-box--con form .input-group textarea,
+#portfolio-form .form-box--con .form-box .input-group textarea {
+  padding: 1em;
+  height: fit-content;
+}
+#portfolio-form #skills ul {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0%;
+  list-style: none;
+}
+#portfolio-form #skills ul li {
+  width: 32.3%;
+  margin: 5px 2px;
+  position: relative;
+}
+#portfolio-form #skills ul li input {
+  max-width: calc(100% - 2em);
+  height: 30px;
+  padding-left: 1em;
+  background: transparent;
+  color: #c1cbf3;
+  border: 1px solid rgba(162, 181, 253, 0.4235294118);
+  font-weight: 600;
+}
+#portfolio-form #skills ul li button {
+  color: rgba(255, 0, 0, 0.705);
+  position: absolute;
+  right: 2%;
+  font-size: 12px;
+}
+#portfolio-form .projects ul {
+  position: relative;
+  width: 100%;
+  padding: 0%;
+  list-style: none;
+  height: 400px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+#portfolio-form .cursor {
+  width: 20px;
+  height: 20px;
+  border: 1px solid orange;
+  border-radius: 50%;
+  position: absolute;
+  transition-duration: 100ms;
+  transition-timing-function: ease-in;
+  animation: cursoranim 0.5s infinite alternate;
+  background-image: linear-gradient(to right, orange, green, #0593ff, violet);
+}
+#portfolio-form .cursor::after {
+  content: "";
+  width: 40px;
+  height: 40px;
+  border: 4px solid #0593ff;
+  opacity: 0.5;
+  border-radius: 50%;
+  position: absolute;
+  transition-duration: 100ms;
+  transition-timing-function: ease-in;
+  animation: cursoranim2 0.5s infinite alternate;
+  top: -15px;
+  left: -15px;
+}
+#portfolio-form .expand {
+  animation: cursoranim3 0.5s forwards;
+  border: 3px solid violet;
+  opacity: 0.5;
+}
+#portfolio-form hr {
+  border: 1px solid rgba(193, 203, 243, 0.8705882353);
+}

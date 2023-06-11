@@ -1,0 +1,13 @@
+#Feedback Messages 
+- Feedback messages have 3 properties (state,code,message)
+-- the state can be null(when there is nothing to share), true(success or informational message), false(error)
+--code stands for status code and message is the main message
+
+#Loading state (when writing this i questioned myself why i use both id and status 😭)
+- it has 3 inputs id,state,message
+- id -- 1 for Loading 0 for not loading
+- status -- true for loading false for not loading
+- message to show in loading state
+
+# Current User
+- Current user is being set from services/firebase/auth

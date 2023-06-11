@@ -1,8 +1,48 @@
-@import "./_colors";
-@import "./_general";
-@import "./_animation";
-@import "./_header";
-@import "./_landing.scss";
+// @import "./themes/default/index.scss";
+// @import "./landing/index.scss";
+// @import "./portfolio-form/index.scss";
 
-//fonts
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600&display=swap');
+.toast{
+    position: absolute;
+    top: 10%;
+    right: 0%;
+    padding: 0.8em;
+    background-color: white;
+    border-bottom: 5px solid ;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, orange, green, #0593ff, violet) ;
+}
+button {
+    cursor: pointer;
+}
+
+.rainbow-button {
+    position: relative;
+    color: #c1cbf3;
+    font-size: 14px;
+    font-weight: 600;
+    height: 42px;
+    min-width: 110px;
+    background: transparent;
+    border: 1px solid;
+    border-image-slice: 1;
+    border-width: 1px;
+    border-image-source: linear-gradient(to right, orange, green, #0593ff, violet);
+}
+
+.rainbow-word {
+    color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(to right, orange, green, #0593ff, violet)
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+.float-right{
+    float: right;
+}

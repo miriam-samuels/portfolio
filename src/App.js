@@ -1,55 +1,72 @@
 import './styles/index.css';
 import Landing from './views/landing';
-import { useRef } from 'react';
-// function sketch(p) {
+import { Routes, Route } from 'react-router-dom';
+import { useMain } from './services';
+import React, { Fragment, useEffect } from 'react';
+import WOW from "wowjs"
 
-//   let xoff1 = 0;
-//   let inc = 0.01;
-//   // p is a reference to the p3 instance this sketch is attached to
-//   p.setup = function () {
-//     p.createCanvas(p.displayWidth, p.displayHeight);
-//     // p.background(0,0,0,0);
-//     // setInterval(() => {
-//     //   p.clear()
-//     // }, 3000);
-
-//   }
-
-//   p.draw = function () {
-
-//   }
-//   // p.noLoop()
-// }
+const PortfolioForm = React.lazy(() => import('./views/portfolio-form'))
+const Default = React.lazy(() => import('./views/portfolio-themes/default'));
+const Calm = React.lazy(() => import('./views/portfolio-themes/calm'));
 
 function App() {
-  // create a reference to the container in which the p3 instance should place the canvas
-  // const p5ContainerRef = useRef();
-  const cursorRef = useRef()
-  document.addEventListener('mousemove', e => {
-    cursorRef.current.setAttribute("style", "top: " + (e.pageY - -3) + "px; left :" + (e.pageX - -3) + "px")
-    // 10 perfect center
-  })
-  document.addEventListener('click', e => {
-    cursorRef.current.classList.add("expand");
-    setTimeout(() => {
-    cursorRef.current.classList.remove("expand");
-    }, 500);
-  })
-  // useEffect(() => {
-  //   // On component creation, instantiate a p3 object with the sketch and container reference 
-  //   // const p5Instance = new p5(sketch, p5ContainerRef.current);
-
-  //   // On component destruction, delete the p3 instance
-  //   return () => {
-  //     p5Instance.remove();
-  //   }
-  // }, []);
+  const { routes, msg } = useMain()
+  useEffect(() => {
+    new WOW.WOW({
+      live: false
+    }).init();
+  }, [])
+  console.log(msg);
+  
   return (
     <div id="app">
-      <Landing />
-      <div className="cursor" ref={cursorRef}>
-        {/* <img src={IMAGES.MATRIX} alt=""/> */}
-      </div>
+      {
+        msg?.length > 0 && msg?.map((item, idx) => (
+          <div className='toast wow slideInRight' key={idx}>
+            <div className='toast-body'>
+              <span>{item.message}</span>
+            </div>
+          </div>
+        ))}
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route
+          path="/setup"
+          element={
+            <React.Suspense fallback={<>...</>}>
+              <PortfolioForm />
+            </React.Suspense>
+          } />
+
+        {
+          routes?.map((item) => (
+            <Fragment key={item.docId}>
+              {
+                item.themeId === 0 ?
+                  <Route
+                    path={`/${item.route}`}
+                    element={
+                      <React.Suspense fallback={<>...</>}>
+                        <Default />
+                      </React.Suspense>
+                    } /> :
+                  item.themeId === 1 ?
+                    <Route
+                      path={`/${item.route}`}
+                      element={
+                        <React.Suspense fallback={<>...</>}>
+                          <Calm />
+                        </React.Suspense>
+                      } /> : ""
+
+              }
+            </Fragment>
+          ))
+        }
+        <Route path="*" element={<>hello</>} />
+
+      </Routes>
+
     </div>
   );
 }
