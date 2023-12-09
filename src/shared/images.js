@@ -1,6 +1,6 @@
 import ORBITAL from '../images/orbital.png'
 import FOLDER from '../images/folder.png'
-import LOGO from '../images/logo.png'
+import LOGO from '../images/LOGO.png'
 import WORKSPACE from '../images/workspace.svg'
 import CONTACT from '../images/workspace.gif'
 import TWITTER from '../images/twitter.svg'

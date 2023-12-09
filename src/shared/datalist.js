@@ -1,38 +1,52 @@
 const featuredProjects = [
     {
-        name:"Multi-tenant Core Banking Application",
-        description:"Worked on the optimization (added new features, bug fixes, code refactoring) of a core banking platform (Banklingo) that serves multiple clients",
-        skills:[]
+        name: "Fuzzy LMS",
+        description: "The system employs fuzzy logic with five inputs (annual income, credit score, loan amount, criminal record, and collateral) to make realistic loan decisions. The output is the borrower's degree of creditworthiness.",
+        skills: ['Go', 'Postgres'],
+        github:"https://github.com/miriam-samuels/Fuzzy-LMS"
     },
     {
-        name:"NFT Marketplace",
-        description:"Worked on the optimization and refactoring of an NFT marketplace (DigitalEyes) which included switch from Rest APIs to Graphql and also optimizing the user interface and experience of the platform in general",
-        skills:[]
+        name: "Kyzzen NFT Hub",
+        description: "Kyzzen is the ultimate NFT hub that offers unique tools for news, events, lending, directory, giveaways, minting, and the academy for newbies. Kyzzen aims to centralize the NFT space.",
+        skills: ['React', 'Typescript', 'Tailwind', 'Solana web3.js'],
+        website: 'https://kyzzen.io'
     },
     {
-        name:"E-learning Platform",
-        description:"Worked in a team to create an e-learning platform alongside a learning management system using React typescript and SASS, as well as handling API integration.",
-        skills:[]
+        name: "Parallex Bank CIB",
+        description: "It's a corporate internet banking platform for business owners, providing them with rich features such as funds transfer(own, intra and inter), payroll, bulk payment, account statements, audit trail and a high level of security.",
+        skills: ['Angular', 'Typescript', 'Bootstrap', 'jQuery'],
+        website: 'https://icorporate.parallexbank.com/'
     },
     {
-        name:"Corporate Banking Application",
-        description:"Lorem ipsum dolor sit amet, consectetur adipiscing . Ut enim ad minim veniam, quis nostrud",
-        skills:[]
+        name: "Juripass",
+        description: "Juripass optimizes formerly time-consuming operations in the litigation process by automating flows like Case Filling, Assignation, Approval, Payment e.t.c",
+        skills: ['React', 'Typescript', 'Redux', 'SCSS'],
+        website: 'https://juripass.netlify.app'
     },
     {
-        name:"CMMS Application",
-        description:"I collaborated with a team to build a CMMS (computerized maintenance management system) application to oversee a bank's operations using React and SCSS and also API integration",
-        skills:[]
+        name: "Cholatrek Learning System",
+        description: "It's an e-learning platform which includes features such as course materials, video lectures, interactive quizzes, discussion forums, and progress tracking.",
+        skills: ['React', 'Typescript'],
+        website: 'https://cholatrek.io'
     },
     {
-        name:"Business Management Platform",
-        description:"Handled the front end of the facility management aspect of (BIZ301) software to aid entrepreneurs keep track of all branches of their business as well as all bills and resources.",
-        skills:[]
+        name: "Minimalist Reactkit",
+        description: "Minimalist Reactkit is a React typescript package that provides you with easily reusable components",
+        skills: ['React', 'Typescript', 'SCSS'],
+        website:'https://www.npmjs.com/package/minimalist-reactkit',
+        github:"https://github.com/miriam-samuels/minimalist-reactkit"
     },
     {
-        name:"Ecommerce Application",
-        description:"Lorem ipsum dolor sit amet, consectetur adipiscing . Ut enim ad minim veniam, quis nostrud",
-        skills:[]
+        name: "Portfolio Builder",
+        description: "This tool collects infromation from users then uses it to construct a portfolio site for them under a sub-route",
+        skills: ['Go', 'Postgres'],
+        github: 'https://github.com/miriam-samuels/portfolio-builder'
+    },
+    {
+        name: "Mitareas",
+        description: "This is a task manager that helps you keep track of different tasks each with their sub-tasks of what you have done, what you are in the process of doing and what you have left to do.",
+        skills: ['React', 'Javascript'],
+        github: 'https://github.com/miriam-samuels/Task-Manager'
     },
 ]
 
