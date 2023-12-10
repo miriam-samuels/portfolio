@@ -19,10 +19,6 @@ function MainProvider({ children }) {
     const [isLoading, setIsLoading] = useState({ id: 0, status: false, message: "" })
 
 
-    useEffect(() => {
-        if (routes === null) getRoutes()
-    }, [routes])
-
 
     // function to set user feedbck
     const setMessage = (state, message) => {
@@ -43,68 +39,53 @@ function MainProvider({ children }) {
         }, 5000)
     }
 
-    // function to get all routes
-    const getRoutes = async () => {
-        let docs = []
-        try {
-            const querySnapshot = await getDocs(collection(db, "routes"))
-            querySnapshot.forEach((doc) => {
-                docs.push({ docId: doc.id, ...doc.data() })
-            })
-            setRoutes(docs)
-            changeLoadingState(0, false)
-        } catch (error) {
-            setMessage(true, "something went wrong")
-            changeLoadingState(0, false)
-        }
-    }
+    // function to get a user 
 
-    // function to get a particular route
-    const getRoute = async (siteId) => {
+    const getUser = async (key, value) => {
         changeLoadingState(1, true, "checking")
         let result;
         try {
-            const docSnap = await getDoc(doc(db, "routes", `${siteId}`));
-            console.log(docSnap.exists());
-            if (docSnap.exists()) {
-                setMessage(true, "site id already exists");
-                changeLoadingState(0, false, "");
-                result = true
+            const res = await fetch(`${process.env.REACT_APP_BASE_URL}/userinfo/janedoe`, {
+                method: "POST",
+            })
+            result = await res.json()
+            if (result.status) {
+                setMessage(true, result?.message)
+                changeLoadingState(0, false)
             } else {
-                changeLoadingState(0, false, "");
-                result = false
+                throw new Error(result?.message);
             }
-        } catch (e) {
-            setMessage(true, "something went wrong")
+            return result
+        } catch (error) {
+            setMessage(false, error.message)
             changeLoadingState(0, false)
         }
+
         return result
     }
 
     // function to create and continuosly update a user in db
     const setUser = async (user) => {
-        let result;
         changeLoadingState(1, true, "updating...")
+        let result;
         try {
-            await setDoc(doc(db, "users", `${user?.email}&id=${user?.siteId}`), { ...user }, { merge: true });
-            result = true;
-        } catch (e) {
-            setMessage(true, "failed to update user details")
-            result = false;
+            const res = await fetch(`${process.env.REACT_APP_BASE_URL}/userinfo/${user?.siteId}`, {
+                method: "PUT",
+                body: JSON.stringify(user)
+            })
+            result = await res.json()
+            if (result.status) {
+                setMessage(true, result?.message)
+                changeLoadingState(0, false)
+            } else {
+                throw new Error(result?.message);
+            }
+            return result
+        } catch (error) {
+            setMessage(false, error.message)
+            changeLoadingState(0, false)
         }
-        changeLoadingState(0, false, "")
         return result
-    }
-
-    // function to add a new route
-    const addRoute = async (route) => {
-        setIsLoading({ id: 1, status: true })
-        try {
-            await setDoc(doc(db, "routes", route?.siteId), { ...route });
-        } catch (e) {
-            console.error("Error adding document: ", e);
-            setIsLoading({ id: 0, status: false })
-        }
     }
 
     const getUsers = async (email) => {
@@ -124,34 +105,10 @@ function MainProvider({ children }) {
         return docs
     }
 
-    const getUser = async (key, value) => {
-        changeLoadingState(1, true, "checking")
-        let result;
-        try {
-            const q = query(collection(db, "users"), where(key, "==", value));
-            const docSnap = await getDocs(q)
-            docSnap.forEach((doc) => {
-                const userDoc = doc.data()
-                if (userDoc[key] === value) {
-                    setMessage(true, "user already exists")
-                    changeLoadingState(0, false)
-                    result = { docId: doc.id, ...userDoc }
-                } else result = false
-            })
-        } catch (e) {
-            result = "something went wrong"
-            setMessage(true, result)
-            changeLoadingState(0, false)
-        }
-        changeLoadingState(0, false)
-        return result
-    }
 
     const value = {
-        getRoutes,
         getUsers,
         getUser,
-        getRoute,
         setUser,
         setMessage,
         changeLoadingState,

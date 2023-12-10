@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import { useMain } from './services';
 import React, { Fragment, useEffect } from 'react';
 import WOW from "wowjs"
+import Cursor from './shared/cursor';
 
 const PortfolioForm = React.lazy(() => import('./views/portfolio-form'))
 const Default = React.lazy(() => import('./views/portfolio-themes/default'));
@@ -11,13 +12,14 @@ const Calm = React.lazy(() => import('./views/portfolio-themes/calm'));
 
 function App() {
   const { routes, msg } = useMain()
+
   useEffect(() => {
+    //  animetion initilizer
     new WOW.WOW({
       live: false
     }).init();
   }, [])
-  console.log(msg);
-  
+
   return (
     <div id="app">
       {
@@ -66,7 +68,7 @@ function App() {
         <Route path="*" element={<>hello</>} />
 
       </Routes>
-
+      {/* <Cursor /> */}
     </div>
   );
 }

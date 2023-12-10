@@ -2,17 +2,27 @@ import { async } from '@firebase/util'
 import React, { Fragment, useEffect } from 'react'
 import { useState } from 'react'
 import { useMain } from '../../services'
-import { useAuth } from '../../services/firebase/auth'
-import Cursor from '../../shared/cursor'
+import { useAuth } from '../../services/auth'
 import '../../styles/portfolio-form/index.css'
 function PortfolioForm() {
     const { currentUser } = useAuth()
-    const [steps, setSteps] = useState(4)
+    const [steps, setSteps] = useState(2)
 
     const [user, setuser] = useState({
         email: localStorage.getItem('userMail') || "",
         password: "",
-        siteId: ""
+        username: localStorage.getItem('siteId'),
+        siteId: localStorage.getItem('siteId'),
+        first_name: "",
+        last_name: "",
+        email: localStorage.getItem('userMail'),
+        phone: "",
+        github: "",
+        linkedin: "",
+        twitter: "",
+        medium: "",
+        tagline: "",
+        objective: "",
     })
 
     useEffect(() => {
@@ -46,7 +56,9 @@ function PortfolioForm() {
             }
             {
                 steps === 3 &&
-                <PersonalInformation
+                <PersonalInfo
+                    user={user}
+                    setuser={setuser}
                     steps={steps}
                     setSteps={setSteps}
                 />
@@ -54,6 +66,8 @@ function PortfolioForm() {
             {
                 steps === 4 &&
                 <Objectives
+                    user={user}
+                    setuser={setuser}
                     steps={steps}
                     setSteps={setSteps}
                 />
@@ -61,6 +75,8 @@ function PortfolioForm() {
             {
                 steps === 5 &&
                 <Skills
+                    user={user}
+                    setuser={setuser}
                     steps={steps}
                     setSteps={setSteps}
                 />
@@ -68,6 +84,8 @@ function PortfolioForm() {
             {
                 steps === 6 &&
                 <Projects
+                    user={user}
+                    setuser={setuser}
                     steps={steps}
                     setSteps={setSteps}
                 />
@@ -75,11 +93,12 @@ function PortfolioForm() {
             {
                 steps === 7 &&
                 <ThemePick
+                    user={user}
+                    setuser={setuser}
                     steps={steps}
                     setSteps={setSteps}
                 />
             }
-            <Cursor />
         </main>
     )
 }
@@ -88,30 +107,18 @@ export default PortfolioForm
 
 function SignUp(props) {
     const { signUp } = useAuth()
-    const { getUser, isLoading, getRoute } = useMain()
+    const { isLoading } = useMain()
 
-    const { valueChange, user, steps, setSteps } = props;
+    const { valueChange, user, setSteps } = props;
 
 
     const register = async (e) => {
         e.preventDefault()
-        try {
-            //check if mail exists
-            const checkMail = await getUser("email", user?.email);
-            if (!checkMail) {
-                // check if siteId exists 
-                const checkSiteId = await getRoute(user?.siteId);
-                if (!checkSiteId) {
-                    //register user
-                    const regUser = await signUp(user.email, user.password, user.siteId)
-                    if (!regUser) {
-                        localStorage.setItem('step', 2)
-                        localStorage.setItem('siteId', user?.siteId)
-                    }
-                }
-            }
-        } catch (error) {
-            console.log(error)
+        //register user
+        const res = await signUp(user.email, user.password, user.siteId)
+        if (res?.status) {
+            setSteps(2)
+            localStorage.setItem('step', 2)
         }
     }
     return (
@@ -163,31 +170,22 @@ function SuccessfulSignUp(props) {
     )
 }
 
-function PersonalInformation(props) {
+function PersonalInfo(props) {
     const { setUser, isLoading } = useMain()
-    const { setSteps } = props
-    const [personalInfo, setPersonalInfo] = useState({
-        firstName: "",
-        lastName: "",
-        email: localStorage.getItem('userMail'),
-        phone: "",
-        github: "",
-        linkedin: "",
-        twitter: "",
-        medium: "",
-        siteId: localStorage.getItem('siteId'),
-    })
+    const { steps, setSteps, user, setuser } = props
+
 
     const handleChange = (e) => {
-        setPersonalInfo({ ...personalInfo, [e.target.name]: e.target.value })
+        setuser({ ...user, [e.target.name]: e.target.value })
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const result = await setUser(personalInfo)
-        if (result) {
-            setSteps(prev => prev + 1)
-            localStorage.setItem('step', 7)
+        //update user
+        const res = await setUser(user)
+        if (res?.status) {
+            localStorage.setItem('step', steps + 1)
+            setSteps(current => current + 1)
         }
     }
     return (
@@ -198,41 +196,41 @@ function PersonalInformation(props) {
                     <div className='flex-input-group text-left'>
                         <div className='input-group'>
                             <label htmlFor="">First Name</label>
-                            <input type="text" name="firstName" id="firstName" onChange={handleChange} value={personalInfo.firstName} required />
+                            <input type="text" name="first_name" id="firstName" onChange={handleChange} value={user.firstName} required />
                         </div>
                         <div className='input-group'>
                             <label htmlFor="">Last Name</label>
-                            <input type="text" name="lastName" id="lastName" onChange={handleChange} value={personalInfo.lastName} required />
+                            <input type="text" name="last_name" id="lastName" onChange={handleChange} value={user.lastName} required />
                         </div>
                     </div>
                     <div className='flex-input-group text-left'>
                         <div className='input-group'>
                             <label htmlFor="">Email</label>
-                            <input type="email" name="email" id="email" onChange={handleChange} value={personalInfo.email} required />
+                            <input type="email" name="email" id="email" onChange={handleChange} value={user.email} required />
                         </div>
                         <div className='input-group'>
                             <label htmlFor="">Phone Number</label>
-                            <input type="tel" name="phone" id="phone" onChange={handleChange} value={personalInfo.phone} required />
+                            <input type="tel" name="phone" id="phone" onChange={handleChange} value={user.phone} required />
                         </div>
                     </div>
                     <div className='flex-input-group text-left'>
                         <div className='input-group'>
                             <label htmlFor="">Github URL</label>
-                            <input type="url" name="github" id="github" onChange={handleChange} value={personalInfo.github} />
+                            <input type="url" name="github" id="github" onChange={handleChange} value={user.github} />
                         </div>
                         <div className='input-group'>
                             <label htmlFor="">LinkedIn URL</label>
-                            <input type="url" name="linkedin" id="linkedin" onChange={handleChange} value={personalInfo.linkedin} />
+                            <input type="url" name="linkedin" id="linkedin" onChange={handleChange} value={user.linkedin} />
                         </div>
                     </div>
                     <div className='flex-input-group text-left'>
                         <div className='input-group'>
                             <label htmlFor="">Twitter URL</label>
-                            <input type="tel" name="twitter" id="twitter" onChange={handleChange} value={personalInfo.twitter} />
+                            <input type="tel" name="twitter" id="twitter" onChange={handleChange} value={user.twitter} />
                         </div>
                         <div className='input-group'>
                             <label htmlFor="">Medium URL</label>
-                            <input type="url" name="medium" id="medium" onChange={handleChange} value={personalInfo.medium} />
+                            <input type="url" name="medium" id="medium" onChange={handleChange} value={user.medium} />
                         </div>
                     </div><br />
                     <div>
@@ -246,24 +244,19 @@ function PersonalInformation(props) {
 
 function Objectives(props) {
     const { setUser, isLoading } = useMain()
-    const { setSteps } = props
-    const [objectives, setObjectives] = useState({
-        tagline: "",
-        objective: "",
-        email: localStorage.getItem('userMail'),
-        siteId: localStorage.getItem('siteId'),
-    })
+    const { steps, setSteps, setuser, user } = props
+
 
     const handleChange = (e) => {
-        setObjectives({ ...objectives, [e.target.name]: e.target.value })
+        setuser({ ...user, [e.target.name]: e.target.value })
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const result = await setUser(objectives)
-        if (result) {
-            setSteps(prev => prev + 1)
-            localStorage.setItem('step', 8)
+        const res = await setUser(user)
+        if (res?.status) {
+            localStorage.setItem('step', steps + 1)
+            setSteps(current => current + 1)
         }
     }
     return (
@@ -274,11 +267,11 @@ function Objectives(props) {
                     <div className='text-left'><br />
                         <div className='input-group'>
                             <label htmlFor="">Tagline (Describe what you do in one sentence)</label>
-                            <textarea name="tagline" id="tagline" placeholder='eg: I design experiences that makes people lives easier ' value={objectives?.tagline} onChange={handleChange} />
+                            <textarea name="tagline" id="tagline" placeholder='eg: I design experiences that makes people lives easier ' value={user?.tagline} onChange={handleChange} />
                         </div><br />
                         <div className='input-group'>
                             <label htmlFor="">Describe yourself and what you do in more words</label>
-                            <textarea placeholder='Describe yourself and what you do in more words' name="objective" id="objective" rows={6} value={objectives?.objective} onChange={handleChange} />
+                            <textarea placeholder='Describe yourself and what you do in more words' name="objective" id="objective" rows={6} value={user?.objective} onChange={handleChange} />
                         </div><br />
                         <div className='text-center'>
                             <button type='submit' className='rainbow-word'>{isLoading?.status ? isLoading?.message : "continue"}</button>
@@ -293,7 +286,7 @@ function Objectives(props) {
 
 function Skills(props) {
     const { setUser, isLoading } = useMain()
-    const { setSteps } = props
+    const { steps, setSteps, user, setuser } = props
     const [skills, setSkills] = useState({
         hard: [],
         soft: [],
@@ -330,14 +323,14 @@ function Skills(props) {
         }
     }
 
+
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const email = localStorage.getItem('userMail');
-        const siteId = localStorage.getItem('siteId');
-        const result = await setUser({ skills, email, siteId })
-        if (result) {
-            setSteps(prev => prev + 1)
-            localStorage.setItem('step', 9)
+        setuser({ ...user, skills })
+        const res = await setUser({ ...user, skills })
+        if (res?.status) {
+            localStorage.setItem('step', steps + 1)
+            setSteps(current => current + 1)
         }
     }
     return (
@@ -422,7 +415,7 @@ function Skills(props) {
 
 function Projects(props) {
     const { setUser, isLoading } = useMain()
-    const { setSteps } = props;
+    const { setSteps, user, setuser, steps } = props;
     const [projects, setProjects] = useState([{
         name: "",
         description: "",
@@ -454,12 +447,11 @@ function Projects(props) {
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const email = localStorage.getItem('userMail');
-        const siteId = localStorage.getItem('siteId');
-        const result = await setUser({ projects, email, siteId })
-        if (result) {
-            setSteps(prev => prev + 1)
-            localStorage.setItem('step', 10)
+        setuser({ ...user, projects })
+        const res = await setUser({ ...user, projects })
+        if (res?.status) {
+            localStorage.setItem('step', steps + 1)
+            setSteps(current => current + 1)
         }
     }
     return (
