@@ -14,7 +14,6 @@ export function useMain() {
 }
 
 function MainProvider({ children }) {
-    const [routes, setRoutes] = useState(null)
     const [msg, setMsg] = useState([])
     const [isLoading, setIsLoading] = useState({ id: 0, status: false, message: "" })
 
@@ -40,13 +39,12 @@ function MainProvider({ children }) {
     }
 
     // function to get a user 
-
     const getUser = async (key, value) => {
         changeLoadingState(1, true, "checking")
         let result;
         try {
-            const res = await fetch(`${process.env.REACT_APP_BASE_URL}/userinfo/janedoe`, {
-                method: "POST",
+            const res = await fetch(`${process.env.REACT_APP_BASE_URL}/userinfo/johndoe`, {
+                method: "GET",
             })
             result = await res.json()
             if (result.status) {
@@ -88,32 +86,62 @@ function MainProvider({ children }) {
         return result
     }
 
-    const getUsers = async (email) => {
-        changeLoadingState(1, true)
-        let docs = []
+    // get all available themes
+    const getThemes = async () => {
+        changeLoadingState(1, true, "fetching themes")
+        let result;
         try {
-            const querySnapshot = await getDocs(collection(db, "users"));
-            querySnapshot.forEach((doc) => {
-                docs.push({ docId: doc.id, ...doc.data() })
+            const res = await fetch(`${process.env.REACT_APP_BASE_URL}/theme/all`, {
+                method: "GET",
             })
-            changeLoadingState(0, false)
-        } catch (e) {
-            console.error("Error adding document: ", e);
-            setMessage(true, "couldn't find docs")
+            result = await res.json()
+            if (result.status) {
+                setMessage(true, result?.message)
+                changeLoadingState(0, false)
+            } else {
+                throw new Error(result?.message);
+            }
+            return result
+        } catch (error) {
+            setMessage(false, error.message)
             changeLoadingState(0, false)
         }
-        return docs
+
+        return result
     }
 
+    // get all user routes
+    const getRoutes = async () => {
+        changeLoadingState(1, true, "fetching routes")
+        let result;
+        try {
+            const res = await fetch(`${process.env.REACT_APP_BASE_URL}/user/routes`, {
+                method: "GET",
+            })
+            result = await res.json()
+            if (result.status) {
+                setMessage(true, result?.message)
+                changeLoadingState(0, false)
+            } else {
+                throw new Error(result?.message);
+            }
+            return result
+        } catch (error) {
+            setMessage(false, error.message)
+            changeLoadingState(0, false)
+        }
+
+        return result
+    }
 
     const value = {
-        getUsers,
         getUser,
         setUser,
         setMessage,
         changeLoadingState,
+        getThemes,
+        getRoutes,
         isLoading,
-        routes,
         msg,
     }
     return (

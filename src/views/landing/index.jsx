@@ -26,7 +26,7 @@ function Landing() {
           <div className='hero-con'>
             <div className="hero wow fadeInDown " data-wow-duration="1s">
               <div className="hero-text">
-                <h2>Let's work on showcasing your best side</h2>
+                <h2>Let's work on showcasing your best</h2>
                 <p>
                   We work together to position you in the right spot career-wise for employers to notice
                 </p>

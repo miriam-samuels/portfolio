@@ -1,11 +1,12 @@
 import React, {useEffect} from 'react'
-import "./css/style.css"
-import "./lib/bootstrap/css/bootstrap.min.css"
+import '../../../styles/themes/calm/style.css'
+
+// import "./lib/bootstrap/css/bootstrap.min.css"
 
 function Calm() {
 
     return (
-        <main>
+        <main className='calm'>
             <div className='cover'>
             {/* <!--/ Nav Star /--> */}
             <nav className="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">

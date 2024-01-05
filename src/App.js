@@ -1,25 +1,38 @@
-import './styles/index.css';
+import './styles/index.scss';
 import Landing from './views/landing';
 import { Routes, Route } from 'react-router-dom';
 import { useMain } from './services';
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import WOW from "wowjs"
-import Cursor from './shared/cursor';
+import { allThemes } from './constants';
 
 const PortfolioForm = React.lazy(() => import('./views/portfolio-form'))
-const Default = React.lazy(() => import('./views/portfolio-themes/default'));
-const Calm = React.lazy(() => import('./views/portfolio-themes/calm'));
 
 function App() {
-  const { routes, msg } = useMain()
+  const { getRoutes, msg } = useMain()
+  const [routes, setRoutes] = useState([])
 
   useEffect(() => {
-    //  animetion initilizer
+    //  animation initilizer
     new WOW.WOW({
       live: false
     }).init();
+
+    // get routes
+    getAllRoutes()
   }, [])
 
+  const getAllRoutes = async () => {
+    const res = await getRoutes()
+    if (res?.status) {
+      setRoutes(res?.data)
+    }
+  }
+
+  const getTheme = (val) => {
+    const th = allThemes?.find(t => t.theme == val)
+    return th.Component
+  }
   return (
     <div id="app">
       {
@@ -42,33 +55,20 @@ function App() {
 
         {
           routes?.map((item) => (
-            <Fragment key={item.docId}>
-              {
-                item.themeId === 0 ?
-                  <Route
-                    path={`/${item.route}`}
-                    element={
-                      <React.Suspense fallback={<>...</>}>
-                        <Default />
-                      </React.Suspense>
-                    } /> :
-                  item.themeId === 1 ?
-                    <Route
-                      path={`/${item.route}`}
-                      element={
-                        <React.Suspense fallback={<>...</>}>
-                          <Calm />
-                        </React.Suspense>
-                      } /> : ""
-
-              }
+            <Fragment key={item.username}>
+              <Route
+                path={`/${item.username}`}
+                element={
+                  <React.Suspense fallback={<>...</>}>
+                    {getTheme(item.theme)}
+                  </React.Suspense>
+                } />
             </Fragment>
           ))
         }
-        <Route path="*" element={<>hello</>} />
+        <Route path="*" element={<>Page not found</>} />
 
       </Routes>
-      {/* <Cursor /> */}
     </div>
   );
 }

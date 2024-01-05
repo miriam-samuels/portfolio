@@ -4,7 +4,7 @@ import * as IMAGE from './components/images'
 import * as DATALIST from './components/datalist'
 import TheLayout from './components/TheLayout'
 import WindowCard from './components/WindowCard'
-import '../../../styles/themes/default/index.css'
+import '../../../styles/themes/default/index.scss'
 import { useLocation } from 'react-router-dom'
 import { useMain } from '../../../services'
 function Default() {
@@ -29,7 +29,7 @@ function Default() {
                         <div className="hero wow fadeInDown " data-wow-duration="1s">
                             <div className="hero-text">
                                 <h5>HI THERE 👋🏾 , I'M </h5>
-                                <h1>{userSite?.firstName} {userSite?.lastName}</h1>
+                                <h1>{userSite?.first_name} {userSite?.last_name}</h1>
                                 <h2>{userSite?.tagline}</h2>
                                 <p>
                                     {userSite?.objective}
@@ -40,7 +40,6 @@ function Default() {
                                 </div>
                             </div>
                         </div>
-                        {/* <img src={IMAGE.ORBITAL} alt="" className="orbital hero-orbital" /> */}
                     </section>
                     <section id="skills">
                         <div className="skills wow fadeIn" data-wow-delay=".5s">
@@ -54,7 +53,7 @@ function Default() {
                                     <Fragment>
                                         <div>
                                             {
-                                                userSite?.skills?.interests?.map((item, index) => (
+                                                userSite?.skills?.interest?.map((item, index) => (
                                                     <span key={index} style={{ display: "block", marginBottom: "20px" }}>• {item}</span>
 
                                                 ))

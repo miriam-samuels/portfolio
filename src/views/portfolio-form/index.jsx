@@ -3,10 +3,10 @@ import React, { Fragment, useEffect } from 'react'
 import { useState } from 'react'
 import { useMain } from '../../services'
 import { useAuth } from '../../services/auth'
-import '../../styles/portfolio-form/index.css'
+import '../../styles/portfolio-form/index.scss'
 function PortfolioForm() {
     const { currentUser } = useAuth()
-    const [steps, setSteps] = useState(2)
+    const [steps, setSteps] = useState(7)
 
     const [user, setuser] = useState({
         email: localStorage.getItem('userMail') || "",
@@ -161,7 +161,7 @@ function SuccessfulSignUp(props) {
         <section id="congrats-box">
             <div className='congrats-box form-box--con'>
                 <div className='form-box text-center'>
-                    <h1>🎉CONGRATULATIONS🎊</h1>
+                    <h2>🎉CONGRATULATIONS🎊</h2>
                     <h4>Now let's set up your Portfolio Site </h4>
                     <button className='rainbow-word' onClick={() => setSteps(prev => prev + 1)} >continue</button>
                 </div>
@@ -192,7 +192,7 @@ function PersonalInfo(props) {
         <section id='personal-info'>
             <div className='personal-info form-box--con'>
                 <form className='form-box text-center' onSubmit={handleSubmit}>
-                    <h1 className='heading'>Personal Information</h1>
+                    <h2 className='heading'>Personal Information</h2>
                     <div className='flex-input-group text-left'>
                         <div className='input-group'>
                             <label htmlFor="">First Name</label>
@@ -263,7 +263,7 @@ function Objectives(props) {
         <section id='objectives'>
             <div className='objectives form-box--con'>
                 <form className='form-box text-center' onSubmit={handleSubmit}>
-                    <h1 className='heading'>Objectives</h1>
+                    <h2 className='heading'>Objectives</h2>
                     <div className='text-left'><br />
                         <div className='input-group'>
                             <label htmlFor="">Tagline (Describe what you do in one sentence)</label>
@@ -303,8 +303,8 @@ function Skills(props) {
     const removeSkill = (e, index) => {
         e.preventDefault()
         const target = e.target.name
-        // const edited = skills[target].splice(index - 1, 1)
-        // setSkills({ ...skills, [target]: edited })
+        const edited = skills[target].filter((s, idx) => idx !== index)
+        setSkills({ ...skills, [target]: [...edited] })
     }
 
 
@@ -337,17 +337,16 @@ function Skills(props) {
         <section id='skills'>
             <div className='theme-pick form-box--con'>
                 <form className='form-box text-center' onSubmit={handleSubmit}>
-                    <h1 className='heading'>Skills</h1>
+                    <h2 className='heading'>Skills & Interest</h2>
                     <div className='text-left'>
                         <div>
-                            <div className='flex-heading'>
-                                <h4>Hard Skils</h4>
+                            <div className='flex-heading '>
+                                <h4>Hard</h4>
                                 <div>
 
-                                    <button className='rainbow-word' name='hard' onClick={addSkill}>add</button>
+                                    <button className='rainbow-word add-skill' name='hard' onClick={addSkill}>+</button>
                                 </div>
                             </div>
-                            <hr />
                             <div>
                                 <ul>
                                     {
@@ -363,12 +362,11 @@ function Skills(props) {
                         </div>
                         <div>
                             <div className='flex-heading'>
-                                <h4>Soft Skils</h4>
+                                <h4>Soft</h4>
                                 <div>
-                                    <button className='rainbow-word' name='soft' onClick={addSkill}>add</button>
+                                    <button className='rainbow-word add-skill' name='soft' onClick={addSkill}>+</button>
                                 </div>
                             </div>
-                            <hr />
                             <div>
                                 <ul>
                                     {
@@ -384,19 +382,18 @@ function Skills(props) {
                         </div>
                         <div>
                             <div className='flex-heading'>
-                                <h4>Major Interest</h4>
+                                <h4>Interest</h4>
                                 <div>
-                                    <button className='rainbow-word' name='interests' onClick={addSkill}>add</button>
+                                    <button className='rainbow-word add-skill' name='interests' onClick={addSkill}>+</button>
                                 </div>
                             </div>
-                            <hr />
                             <div>
                                 <ul>
                                     {
                                         skills?.interests?.map((skill, index) => (
                                             <li key={index}>
                                                 <input placeholder='enter skill' defaultValue={skill} name='interests' onChange={(e) => handleChange(e, index)} />
-                                                <button name="interests" onClick={(e) => removeSkill(e, index)}>x</button>
+                                                <button name="interests" onClick={(e) => removeSkill(e, index)}>x</button       >
                                             </li>
                                         ))
                                     }
@@ -458,7 +455,7 @@ function Projects(props) {
         <section id='projects'>
             <div className='projects form-box--con'>
                 <form className='form-box text-center' onSubmit={handleSubmit}>
-                    <h1 className='heading'>Projects</h1>
+                    <h2 className='heading'>Projects</h2>
                     <div className='text-left'>
                         <div className='flex-heading'>
                             <h4></h4>
@@ -502,17 +499,41 @@ function Projects(props) {
 }
 
 function ThemePick() {
+    const { getThemes } = useMain()
+
+    const [themes, setThemes] = useState([])
+
+    useEffect(() => {
+        getAllThemes()
+    }, [])
+
+
+    const getAllThemes = async () => {
+        const res = await getThemes()
+        if (res?.status) {
+            setThemes(res?.data)
+        }
+    }
     return (
         <section id='theme-pick'>
             <div className='theme-pick form-box--con'>
                 <div className='form-box text-center'>
-                    <h1>Yay, we're almost there 🥳</h1>
                     <h4>Let's pick a theme that best suits your pesonality</h4>
-                    <div>
-                        <figure>
-                            <img src="" alt="" />
-                            <figcaption>Default</figcaption>
-                        </figure>
+                    <div className='themes-box'>
+                        {
+                            themes?.map((theme) => (
+                                <figure key={theme.id}>
+                                    <img src={theme?.image} alt="theme" />
+                                    <figcaption>
+                                        <div>
+                                            <input type="radio" name="" id="" />
+                                            {theme.name}
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            ))
+                        }
+
                     </div>
                     <hr />
                     <div className='text-center'>
@@ -530,7 +551,7 @@ function AllSuccessful(props) {
         <section id="congrats-box">
             <div className='congrats-box form-box--con'>
                 <div className='form-box text-center'>
-                    <h1>🎉CONGRATULATIONS🎊</h1>
+                    <h2>🎉CONGRATULATIONS🎊</h2>
                     <h4>Now let's set up your Portfolio Site </h4>
                     <button className='rainbow-word' onClick={() => setSteps(prev => prev + 1)} >continue</button>
                 </div>

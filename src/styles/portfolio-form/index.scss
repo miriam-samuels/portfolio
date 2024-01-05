@@ -4,6 +4,7 @@
     height: 100vh;
     position: relative;
     overflow: hidden;
+
     &::after {
         content: "";
         position: absolute;
@@ -14,7 +15,7 @@
         display: block;
         background-image: url(../../images/portfolio-form/galaxy.jpg);
         animation: zoom;
-        animation-duration: 60s;
+        animation-duration: 80s;
         animation-timing-function: ease-in-out;
         animation-iteration-count: infinite;
         z-index: -1;
@@ -32,9 +33,9 @@
         .form-box {
             background-color: #0a1323;
             border: 1px solid #c1cbf32d;
-            width: 400px;
+            width: 500px;
             color: #c1cbf3;
-            padding: 2em;
+            padding: 1.5em;
             border-radius: 10px;
             animation: fadeIn;
             animation-duration: .5s;
@@ -43,17 +44,12 @@
             .flex-heading {
                 display: flex;
                 align-items: center;
+                justify-content: space-between;
                 width: 100%;
-
-                h4 {
-                    width: 160px;
+                & h4{
+                    margin: 0;
                 }
-
-                div {
-                    width: 100%;
-                    text-align: right;
-
-                }
+               
             }
 
             button {
@@ -110,8 +106,8 @@
 
             .flex-input-group {
                 display: grid;
-                grid-template-columns: auto auto;
-                gap: 20px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
             }
 
             .input-group {
@@ -149,33 +145,48 @@
         ul {
             position: relative;
             width: 100%;
-            display: flex;
-            flex-wrap: wrap;
-
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
+            gap: 0.4em;
             padding: 0%;
             list-style: none;
 
             li {
-                width: 32.3%;
-                margin: 5px 2px;
+                // width: 150px;
                 position: relative;
 
                 input {
-                    max-width: calc(100% - 2em);
-                    height: 30px;
+                    box-sizing: border-box;
+                    width: 100%;
+                    height: 35px;
                     padding-left: 1em;
                     background: transparent;
                     color: #c1cbf3;
                     border: 1px solid #a2b5fd6c;
                     font-weight: 600;
                 }
-                button{
+
+                button {
+                    // width: 10px;
+                    cursor: pointer;
                     color: rgba(255, 0, 0, 0.705);
                     position: absolute;
-                    right: 2%;
-                    font-size: 12px;
+                    right: 0%;
+                    top: 50%;
+                    transform: translate(0,-50%);
+                    font-size: 14px;
                 }
             }
+        }
+        & .flex-heading{
+            border-bottom: 1px solid rgba(128, 128, 128, 0.238);
+        }
+
+        & .add-skill{
+            width: fit-content !important;
+            font-size: 30px;
+            padding: 0 !important;
+            cursor: pointer;
         }
     }
 
@@ -218,6 +229,18 @@
         top: -15px;
         left: -15px;
 
+    }
+
+    .themes-box {
+        display: flex;
+
+        & figure {
+            min-width: 100px;
+
+            & img {
+                width: 100%;
+            }
+        }
     }
 
     // cursor expand

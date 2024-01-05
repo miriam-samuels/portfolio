@@ -3,6 +3,7 @@ function TheLayout({ children }) {
         <div className="cover">
             <div id="header ">
                 <header>
+                    <div></div>
                     <div className="header-links wow fadeInRight">
                         <ul>
                             <li><a href="#skills"><span className="rainbow-word">01.</span> skills</a></li>
@@ -21,7 +22,6 @@ function TheLayout({ children }) {
             </div>
             <main>
                 {children}
-
             </main>
             <footer>
 
