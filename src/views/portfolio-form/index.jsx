@@ -6,7 +6,7 @@ import { useAuth } from '../../services/auth'
 import '../../styles/portfolio-form/index.scss'
 function PortfolioForm() {
     const { currentUser } = useAuth()
-    const [steps, setSteps] = useState(7)
+    const [steps, setSteps] = useState(6)
 
     const [user, setuser] = useState({
         email: localStorage.getItem('userMail') || "",
@@ -83,7 +83,7 @@ function PortfolioForm() {
             }
             {
                 steps === 6 &&
-                <Projects
+                <Experience
                     user={user}
                     setuser={setuser}
                     steps={steps}
@@ -92,6 +92,15 @@ function PortfolioForm() {
             }
             {
                 steps === 7 &&
+                <Projects
+                    user={user}
+                    setuser={setuser}
+                    steps={steps}
+                    setSteps={setSteps}
+                />
+            }
+            {
+                steps === 8 &&
                 <ThemePick
                     user={user}
                     setuser={setuser}
@@ -410,6 +419,164 @@ function Skills(props) {
     )
 }
 
+function Experience(props) {
+    const { setUser, isLoading } = useMain()
+    const { setSteps, user, setuser, steps } = props;
+    const [contribution, setContribution] = useState("")
+    const [exp, setExp] = useState([{
+        title: "",
+        organization: "",
+        startDate: "",
+        endDate: "",
+        isPresent: false,
+        contributions: []
+    }])
+
+    const addExp = (e) => {
+        e.preventDefault()
+        setExp([
+            {
+                title: "",
+                organization: "",
+                startDate: "",
+                endDate: "",
+                isPresent: false,
+                contributions: []
+            },
+            ...exp,
+        ])
+    }
+    const handleChange = (e, idx) => {
+        let newArr = exp;
+        let index = 0
+        while (index < exp.length) {
+            newArr[idx] = { ...newArr[idx], [e.target.name]: e.target.value }
+            if (index === idx) {
+                setExp(newArr);
+                break;
+            }
+            index++;
+        }
+    }
+
+    const addContribution = (e, idx) => {
+        e.preventDefault()
+        let newArr = exp;
+        let index = 0
+        while (index < exp.length) {
+            newArr[idx] = { ...newArr[idx], contributions: [...newArr[idx].contributions, contribution] }
+            if (index === idx) {
+                setExp(newArr);
+                setContribution('')
+                break;
+            }
+            index++;
+        }
+
+        console.log(exp);
+    }
+
+    const removeContribution = (e, idx, ctrIdx) => {
+        e.preventDefault()
+        let newArr = exp;
+        let index = 0
+        while (index < exp.length) {
+            if (index === idx) {
+                newArr[idx] = { ...newArr[idx], contributions: newArr[idx].contributions.filter((c, indx) => indx != ctrIdx) }
+                setExp(newArr);
+                break;
+            }
+            index++;
+        }
+    }
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setuser({ ...user, exp })
+        const res = await setUser({ ...user, experience: exp })
+        if (res?.status) {
+            localStorage.setItem('step', steps + 1)
+            setSteps(current => current + 1)
+        }
+    }
+    return (
+        <section id='projects'>
+            <div className='projects form-box--con'>
+                <form className='form-box text-center' onSubmit={handleSubmit}>
+                    <h2 className='heading'>Experience</h2>
+                    <div className='text-left'>
+                        <div className='flex-heading'>
+                            <h4></h4>
+                            <div>
+                                <button type='button' className='rainbow-word' name='soft' onClick={addExp}>add</button>
+                            </div>
+                        </div>
+                        <div>
+                            <ul>
+                                {
+                                    exp?.map((ex, index) => (
+                                        <Fragment key={index}>
+                                            <li>
+                                                <div className='input-group'>
+                                                    <label htmlFor="">Title</label>
+                                                    <input type='text' defaultValue={ex.title} name='title' onChange={(e) => handleChange(e, index)} />
+                                                </div><br />
+                                                <div className='input-group'>
+                                                    <label htmlFor="">Organization</label>
+                                                    <input type='text' defaultValue={ex.organization} name='organization' onChange={(e) => handleChange(e, index)} />
+                                                </div><br />
+                                                <div className='dates'>
+                                                    <div className='input-group'>
+                                                        <label htmlFor="">Start Date</label>
+                                                        <input type='date' defaultValue={ex.startDate} name='startDate' onChange={(e) => handleChange(e, index)} />
+                                                    </div>
+                                                    <div className='input-group'>
+                                                        <label htmlFor="">End Date</label>
+                                                        <input readOnly={ex.isPresent} type='date' defaultValue={ex.endDate} name='endDate' onChange={(e) => handleChange(e, index)} />
+                                                    </div>
+                                                </div>
+                                                <div className='input-group checkbox' >
+                                                    <input type='checkbox' defaultValue={ex.isPresent} name='isPresent' onChange={(e) => handleChange(e, index)} />
+                                                    <label htmlFor="">Present Role</label>
+                                                </div><br />
+                                                <div>
+                                                    <div className='flex-heading '>
+                                                        <h4>Contributions</h4>
+                                                    </div>
+                                                    <div>
+                                                        <div>
+                                                            {
+                                                                ex?.contributions?.map((ctr, indx) => (
+                                                                    <div key={indx}>
+                                                                        {ctr}
+                                                                        <button onClick={(e) => removeContribution(e, index, indx)}>x</button>
+                                                                    </div>
+                                                                ))
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div className='input-group ctr'>
+                                                        <input placeholder='enter skill' value={contribution} name='contribution' onChange={(e) => setContribution(e.target.value)} />
+                                                        <button className='rainbow-word add-skill' name='hard' type='button' onClick={(e) => addContribution(e, index)}>Save</button>
+                                                    </div>
+
+                                                </div>
+                                            </li>
+                                            <hr />
+                                        </Fragment>
+                                    ))
+                                }
+                            </ul>
+                        </div>
+                        <div className='text-center'>
+                            <button type='submit' className='rainbow-word'>{isLoading?.status ? isLoading?.message : "continue"}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    )
+}
+
 function Projects(props) {
     const { setUser, isLoading } = useMain()
     const { setSteps, user, setuser, steps } = props;
@@ -498,21 +665,28 @@ function Projects(props) {
     )
 }
 
-function ThemePick() {
+function ThemePick(props) {
     const { getThemes } = useMain()
 
+    const [isLoading, setIsLoading] = useState(false)
     const [themes, setThemes] = useState([])
+    const { steps, setSteps, user, setuser } = props
 
     useEffect(() => {
         getAllThemes()
     }, [])
 
+    const handleChange = (e) => {
+        setuser({ ...user, [e.target.name]: e.target.value })
+    }
 
     const getAllThemes = async () => {
+        setIsLoading(true)
         const res = await getThemes()
         if (res?.status) {
             setThemes(res?.data)
         }
+        setIsLoading(false)
     }
     return (
         <section id='theme-pick'>
@@ -521,19 +695,19 @@ function ThemePick() {
                     <h4>Let's pick a theme that best suits your pesonality</h4>
                     <div className='themes-box'>
                         {
-                            themes?.map((theme) => (
+                            !isLoading && themes?.map((theme) => (
                                 <figure key={theme.id}>
                                     <img src={theme?.image} alt="theme" />
                                     <figcaption>
                                         <div>
-                                            <input type="radio" name="" id="" />
+                                            <input type="radio" name="theme" value={theme.name} onChange={handleChange} />
                                             {theme.name}
                                         </div>
                                     </figcaption>
                                 </figure>
                             ))
                         }
-
+                        {isLoading && <h2 className='rainbow-worf'> Loading Themes.....</h2>}
                     </div>
                     <hr />
                     <div className='text-center'>
