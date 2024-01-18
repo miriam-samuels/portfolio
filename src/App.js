@@ -5,6 +5,8 @@ import { useMain } from './services';
 import React, { Fragment, useEffect, useState } from 'react';
 import WOW from "wowjs"
 import { allThemes } from './constants';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const PortfolioForm = React.lazy(() => import('./views/portfolio-form'))
 
@@ -35,16 +37,7 @@ function App() {
   }
   return (
     <div id="app">
-      {
-        msg?.length > 0 && msg?.map((item, idx) => (
-          <div className='toast wow slideInRight' key={idx}>
-            <div className='toast-body'>
-              <span>{item.message}</span>
-            </div>
-          </div>
-        ))}
       <Routes>
-        <Route path="/" element={<Landing />} />
         <Route
           path="/setup"
           element={
@@ -66,9 +59,12 @@ function App() {
             </Fragment>
           ))
         }
+        {/* <Route path="/" element={<Landing />} /> */}
+
         <Route path="*" element={<>Page not found</>} />
 
       </Routes>
+      <ToastContainer />
     </div>
   );
 }

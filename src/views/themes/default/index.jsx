@@ -7,6 +7,7 @@ import WindowCard from './components/WindowCard'
 import '../../../styles/themes/default/index.scss'
 import { useLocation } from 'react-router-dom'
 import { useMain } from '../../../services'
+import Tab from './components/tab'
 function Default() {
     const { getUser } = useMain()
     const location = useLocation()
@@ -89,14 +90,47 @@ function Default() {
                             </div>
                         </div>
                     </section>
+                    <section id="workplace">
+                        <div className="workplace wow fadeIn" data-wow-delay="0.5s">
+                            <div className="general--heading">
+                                <span className="rainbow-word">02.</span>
+                                <h2>Where I've Worked</h2>
+                                <hr />
+                            </div>
+                            <div className='workplace--body'>
+                                <Tab
+                                    head={userSite?.experience?.map((e) => e.organization)}
+                                    body={
+                                        userSite?.experience?.map((e,idx) => (
+                                            <div key={idx}>
+                                                <div>
+                                                    <h3 className='rainbow-word'>{ e.title}</h3>
+                                                    <p>{new Date(e.start_date)?.toDateString() || ''}  - {e.is_present ? 'present' : new Date(e.end_date)?.toDateString() || ''}</p>
+                                                </div>
+                                                <div>
+                                                    <ul>
+                                                        {
+                                                            e.contributions?.map((ctr, idx) => (
+                                                                <li key={idx}>{ ctr}</li>
+                                                            ))
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        ))
+                                    }
+                                />
+                            </div>
+                        </div>
+                    </section>
                     <section id="projects">
                         <div className="projects wow fadeIn" data-wow-delay=".5s">
                             <div className="general--heading">
-                                <span className="rainbow-word">02.</span>
+                                <span className="rainbow-word">03.</span>
                                 <h2>Featured Projects</h2>
                                 <hr />
                             </div>
-                            <div className="projects--body"> 
+                            <div className="projects--body">
                                 {
                                     userSite?.projects?.slice(0, view)?.map((item, index) => (
                                         <FolderCard key={index}>
@@ -132,15 +166,7 @@ function Default() {
 
                         </div>
                     </section>
-                    {/* <section id="experience">
-                    <div className="experience">
-                        <div className="general--heading">
-                            <span className="rainbow-word">03.</span>
-                            <h2>Work Experience</h2>
-                            <hr />
-                        </div>
-                    </div>
-                </section> */}
+
                     <section id="contact">
                         <div className="contact">
                             <div className="general--heading">
@@ -256,3 +282,4 @@ function Default() {
 }
 
 export default Default
+
