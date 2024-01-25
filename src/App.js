@@ -1,4 +1,4 @@
-import './styles/index.scss';
+import './App.css';
 import Landing from './views/landing';
 import { Routes, Route } from 'react-router-dom';
 import { useMain } from './services';
@@ -59,7 +59,7 @@ function App() {
             </Fragment>
           ))
         }
-        {/* <Route path="/" element={<Landing />} /> */}
+        <Route path="/" element={<Landing />} />
 
         <Route path="*" element={<>Page not found</>} />
 
