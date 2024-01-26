@@ -286,7 +286,7 @@ h1 {
   }
   #header {
     padding: 1em;
-    width: 95.1%;
+    width: calc(100% - 2em);
   }
   h1 {
     margin: 1px 0;

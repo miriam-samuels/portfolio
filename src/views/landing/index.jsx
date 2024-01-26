@@ -37,7 +37,7 @@ function Landing() {
                     {/* <img src={IMAGE.ORBITAL} alt="" className="orbital hero-orbital" /> */}
                 </section>
                 <section id="skills">
-                    <div className="skills wow fadeIn" data-wow-delay="0.7s">
+                    <div className="skills wow fadeIn" data-wow-delay="0.6s">
                         <div className="general--heading">
                             <span className="rainbow-word">01.</span>
                             <h2>Skills {"&"} Interests</h2>
@@ -90,7 +90,7 @@ function Landing() {
                     </div>
                 </section>
                 <section id="workplace">
-                    <div className="workplace wow fadeIn" data-wow-delay="0.5s">
+                    <div className="workplace wow fadeIn" data-wow-delay="0.4s">
                         <div className="general--heading">
                             <span className="rainbow-word">02.</span>
                             <h2>Where I've Worked</h2>
@@ -105,7 +105,7 @@ function Landing() {
                     </div>
                 </section>
                 <section id="projects">
-                    <div className="projects wow fadeIn" data-wow-delay=".5s">
+                    <div className="projects wow fadeIn" data-wow-delay=".3s">
                         <div className="general--heading">
                             <span className="rainbow-word">03.</span>
                             <h2>Projects I've Worked On</h2>
@@ -264,7 +264,7 @@ const Exp1 = () => {
     return (
         <div>
             <div>
-                <h3 className='rainbow-word'>Front-End Engineer</h3>
+                <h3 className='rainbow-word'>Software Engineer</h3>
                 <p>June 2022 - June 2023</p>
             </div>
             <div>
@@ -299,8 +299,8 @@ const Exp3 = () => {
     return (
         <div>
             <div>
-                <h3 className='rainbow-word'>Tech Educator & Front-End Team Lead</h3>
-                <p>December 2020 -june 2023</p>
+                <h3 className='rainbow-word'>Software Engineer & Tech Educator</h3>
+                <p>December 2020 - August 2023</p>
             </div>
             <div>
                 <ul>
