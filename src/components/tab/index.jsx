@@ -1,5 +1,6 @@
+'use client';
 import React, { useState } from 'react'
-import './index.css'
+import './index.scss'
 
 function Tab({ head, body, className, direction = 'horizontal' }) {
    const [tab, setTab] = useState(0)

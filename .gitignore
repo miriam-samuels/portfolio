@@ -1,4 +1,5 @@
 node_modules
+.next
 src/views/.DS_Store
 src/images/.DS_Store
 src/.DS_Store

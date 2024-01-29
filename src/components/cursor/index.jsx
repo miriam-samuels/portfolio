@@ -1,9 +1,9 @@
-import { useRef, useEffect } from 'react';
-import Landing from './views/landing';
-import './styles/index.css';
-import './index.css';
+'use client';
+import React, { useRef, useEffect } from 'react';
+import './index.scss'
 
-function App() {
+
+function Cursor() {
   const cursorRef = useRef()
 
   useEffect(() => {
@@ -19,13 +19,8 @@ function App() {
     })
   }, []);
   return (
-    <div id="app">
-      <Landing />
-      <div className="cursor" ref={cursorRef}>
-        {/* <img src={IMAGES.MATRIX} alt=""/> */}
-      </div>
-    </div>
-  );
+    <div className="cursor" ref={cursorRef}> </div>
+  )
 }
 
-export default App;
+export default Cursor

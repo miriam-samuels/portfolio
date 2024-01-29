@@ -1,11 +1,13 @@
 import React, { Fragment } from 'react'
-import * as IMAGE from './images'
+import * as IMAGE from '../../constants/images'
+import "./index.scss";
+import Image from 'next/image';
 
 function FolderCard(props) {
   return (
     <div className="folder-card wow slideInUp">
       <div className="card--actions">
-        <img src={IMAGE.FOLDER} alt="folder" />
+      <Image src={IMAGE.FOLDER}  width={30}  alt="folder"/>
         <div>
           {
             props?.data?.github &&
