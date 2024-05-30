@@ -6,6 +6,13 @@ const featuredProjects = [
         github:"https://github.com/miriam-samuels/Fuzzy-LMS"
     },
     {
+        name: "Minimalist Reactkit",
+        description: "Minimalist Reactkit is a React typescript package that provides you with easily reusable components",
+        skills: ['React', 'Typescript', 'SCSS'],
+        website:'https://www.npmjs.com/package/minimalist-reactkit',
+        github:"https://github.com/miriam-samuels/minimalist-reactkit"
+    },
+    {
         name: "Kyzzen NFT Hub",
         description: "Kyzzen is the ultimate NFT hub that offers unique tools for news, events, lending, directory, giveaways, minting, and the academy for newbies. Kyzzen aims to centralize the NFT space.",
         skills: ['React', 'Typescript', 'Tailwind', 'Solana web3.js'],
@@ -18,10 +25,23 @@ const featuredProjects = [
         website: 'https://icorporate.parallexbank.com/'
     },
     {
+        name: "TakeTrips",
+        description: "A platform that allows you to book flights, manage booked flights and apply for a visa",
+        skills: ['React', 'Typescript'],
+        website: 'https://bookings.taketrips.co'
+    },
+    {
         name: "Juripass",
         description: "Juripass optimizes formerly time-consuming operations in the litigation process by automating flows like Case Filling, Assignation, Approval, Payment e.t.c",
         skills: ['React', 'Typescript', 'Redux', 'SCSS'],
         website: 'https://juripass.netlify.app'
+    },
+
+    {
+        name: "Portfolio Builder",
+        description: "This tool collects infromation from users then uses it to construct a portfolio site for them under a sub-route",
+        skills: ['Go', 'Postgres'],
+        github: 'https://github.com/miriam-samuels/portfolio-builder'
     },
     {
         name: "Cholatrek Learning System",
@@ -29,19 +49,7 @@ const featuredProjects = [
         skills: ['React', 'Typescript'],
         website: 'https://cholatrek.io'
     },
-    {
-        name: "Minimalist Reactkit",
-        description: "Minimalist Reactkit is a React typescript package that provides you with easily reusable components",
-        skills: ['React', 'Typescript', 'SCSS'],
-        website:'https://www.npmjs.com/package/minimalist-reactkit',
-        github:"https://github.com/miriam-samuels/minimalist-reactkit"
-    },
-    {
-        name: "Portfolio Builder",
-        description: "This tool collects infromation from users then uses it to construct a portfolio site for them under a sub-route",
-        skills: ['Go', 'Postgres'],
-        github: 'https://github.com/miriam-samuels/portfolio-builder'
-    },
+
     {
         name: "Mitareas",
         description: "This is a task manager that helps you keep track of different tasks each with their sub-tasks of what you have done, what you are in the process of doing and what you have left to do.",

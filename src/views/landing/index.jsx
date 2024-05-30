@@ -25,7 +25,7 @@ function Landing() {
                             <h1>Miriam Medo</h1>
                             <h2>I bring ideas to life</h2>
                             <p>
-                            I am a software engineer and tech educator, dedicated to creating high-quality software that solves real-world problems. I am product oriented and believe things should be kept simple.
+                                I am a software engineer and tech educator, dedicated to creating high-quality software that solves real-world problems. I am product oriented and believe things should be kept simple.
                                 {/* I am a software engineer and tech educator who is dedicated to creating high-quality software that solves real-world problems. With extensive experience in both React and Angular, I have a proven track record of delivering performant, scalable, and user-friendly web applications for 4 years+. */}
                             </p>
                             <hr />
@@ -58,16 +58,10 @@ function Landing() {
                                 <Fragment>
                                     <div className="hard-skill">
                                         <h5 className="primary">Primary Technologies</h5>
-                                        <span>React</span>
-                                        <span>Angular</span>
-                                        <span>Typescript</span>
-                                        <span>Javascript</span>
                                         <span>Golang</span>
+                                        <span>React (Typescript/ Javascript)</span>
+                                        <span>Angular</span>
                                         <span>Redux</span>
-                                    </div>
-                                    <div className="hard-skill">
-                                        <h5>Occasionally used</h5>
-                                        <span>React Native</span>
                                     </div>
                                     <div className="hard-skill">
                                         <h5>Exposed to</h5>
@@ -98,8 +92,8 @@ function Landing() {
                         </div>
                         <div className='workplace--body'>
                             <Tab
-                                head={['Blache', 'Cholatrek', 'ValueDriver', 'Nidcom']}
-                                body={[<Exp2 />, <Exp3 />, <Exp1 />, <Exp4 />]}
+                                head={[ 'Cholatrek','Blache', 'ValueDriver', 'Nidcom']}
+                                body={[<Exp3 />, <Exp2 />, <Exp1 />, <Exp4 />]}
                             />
                         </div>
                     </div>
@@ -122,7 +116,7 @@ function Landing() {
                         </div>
                         <div className="view-btn">
                             {
-                                view > 6 &&
+                                view >= DATALIST?.featuredProjects.length &&
                                 <button className="view-more" onClick={() => setView(current => current - 3)}>
                                     View Less
                                 </button>
@@ -223,13 +217,13 @@ function Landing() {
                                     <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="#c1cbf3eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-github"><title>GitHub</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                                 </a>
                             </li>
-                            <li title="@medo_miriam">
+                            <li title="@medo.miriam">
                                 <a href="https://www.instagram.com/miriam.medo" aria-label="Instagram" target="_blank" rel="noreferrer">
                                     <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="#c1cbf3eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-instagram"><title>Instagram</title><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                                     </svg>
                                 </a>
                             </li>
-                            <li title="@your_fave_techy">
+                            <li title="@medo_miriam">
                                 <a href="https://twitter.com/miriam_medo" aria-label="Twitter" target="_blank" rel="noreferrer">
                                     <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="#c1cbf3eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-twitter"><title>Twitter</title><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
                                     </svg>
@@ -281,7 +275,7 @@ const Exp2 = () => {
     return (
         <div>
             <div>
-                <h3 className='rainbow-word'>Front-End Engineer</h3>
+                <h3 className='rainbow-word'>Software Engineer</h3>
                 <p>April 2022 - Present</p>
             </div>
             <div>
@@ -300,7 +294,7 @@ const Exp3 = () => {
         <div>
             <div>
                 <h3 className='rainbow-word'>Software Engineer & Tech Educator</h3>
-                <p>December 2020 - August 2023</p>
+                <p>December 2020 - Present</p>
             </div>
             <div>
                 <ul>
@@ -308,7 +302,7 @@ const Exp3 = () => {
                     <li>Performed comprehensive code reviews with team members, ensuring adherence to company quality standards and resulting in a significant decrease in code errors and bugs.</li>
                     <li>Collaboration with team members on end-to-end testing for product releases resulted in a 15% reduction in post-release defects and an enhanced user experience.</li>
                     <li>Developed and implemented a comprehensive front-end web development curriculum and course content, resulting in a significant increase in student enrollment and completion rates.</li>
-                    <li>Mentored a team of interns in React.js fundamentals, resulting in a 75% improvement in their coding skills and ability to contribute to real-world projects.</li>
+                    <li>Mentored a team of interns in React.js fundamentals, resulting in a 100% improvement in their coding skills and ability to contribute to real-world projects.</li>
                     <li>Organised and facilitated a career guidance session for aspiring tech professionals, providing guidance on industry trends, job search strategies, and networking opportunities. </li>
                 </ul>
             </div>

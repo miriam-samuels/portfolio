@@ -24,7 +24,8 @@ button {
 
 .rainbow-word {
   color: transparent;
-  background-clip: text;
+  -webkit-background-clip: text;
+          background-clip: text;
   background-image: linear-gradient(to right, orange, green, #0593ff, violet);
 }
 
@@ -151,7 +152,7 @@ h1 {
   transition-duration: 0.3s;
   transition-timing-function: ease-in;
   width: 350px;
-  height: 310px;
+  height: 250px;
   margin: 1em;
   border-radius: 10px;
   background-color: rgb(15, 25, 48);
@@ -213,7 +214,7 @@ h1 {
 
 .folder-card {
   box-shadow: 3px 3px 5px 2px black;
-  min-height: 235px;
+  min-height: 255px;
   min-width: 215px;
   max-width: 300px;
   margin: 1em;
@@ -720,4 +721,4 @@ header #header .logo img {
 
 #contact {
   min-height: 37.5vh;
-}
+}/*# sourceMappingURL=index.css.map */
