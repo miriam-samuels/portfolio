@@ -1,0 +1,137 @@
+.image-gallery-component {
+    // Gallery Layout
+    .image-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      
+      &.horizontal {
+        flex-direction: row;
+      }
+      
+      &.vertical {
+        flex-direction: column;
+      }
+      
+      // Gap variations
+      &.gap-small {
+        gap: 8px;
+      }
+      
+      &.gap-normal {
+        gap: 16px;
+      }
+      
+      &.gap-large {
+        gap: 24px;
+      }
+    }
+    
+    // Thumbnail styling
+    .thumbnail {
+      cursor: pointer;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        opacity: 0.9;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+      }
+      
+      // Size variations
+      &.size-small {
+        width: 64px;
+        height: 64px;
+      }
+      
+      &.size-medium {
+        width: 96px;
+        height: 96px;
+      }
+      
+      &.size-large {
+        width: 128px;
+        height: 128px;
+      }
+      
+      &.size-xlarge {
+        width: 160px;
+        height: 160px;
+      }
+      
+      // Border radius variations
+      &.radius-none {
+        border-radius: 0;
+      }
+      
+      &.radius-small {
+        border-radius: 4px;
+      }
+      
+      &.radius-medium {
+        border-radius: 8px;
+      }
+      
+      &.radius-large {
+        border-radius: 12px;
+      }
+      
+      &.radius-full {
+        border-radius: 50%;
+      }
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    
+    // Modal styling
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 16px;
+      
+      .modal-content {
+        position: relative;
+        max-height: 90vh;
+        max-width: 90vw;
+        overflow: auto;
+        
+        img {
+          max-height: 90vh;
+          max-width: 100%;
+          border-radius: 4px;
+        }
+        
+        .close-button {
+          position: absolute;
+          top: 8px;
+          right: 8px;
+          background-color: rgba(0, 0, 0, 0.5);
+          color: white;
+          border: none;
+          border-radius: 50%;
+          padding: 8px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: background-color 0.2s ease;
+          
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+          }
+        }
+      }
+    }
+  }
