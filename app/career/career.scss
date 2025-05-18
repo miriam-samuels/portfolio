@@ -1,0 +1,213 @@
+/* Career Page Styles */
+$background-color: #0a0e1a;
+$text-color: #f5f5f7;
+$text-color-secondary: #a8b1cf;
+$accent-color: #6e8fff;
+$card-bg-color: #1e223380;
+$border-color: rgba(255, 255, 255, 0.05);
+$box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+$icon-bg-color: #2d3142;
+.career-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  color: $text-color;
+  font-family: 'Inter', sans-serif;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #6e8fff, #ad8eff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header .subtitle {
+  color: $text-color-secondary;
+  font-size: 1.1rem;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 40px;
+  position: relative;
+}
+
+.career-card {
+  display: flex;
+  flex-direction: column;
+  background-color: $card-bg-color;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid $border-color;
+  box-shadow: $box-shadow;
+}
+
+.career-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.date-star {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid $border-color;
+}
+
+.date {
+  font-size: 0.9rem;
+  color: $text-color-secondary;
+}
+
+.star-rating {
+  color: #ffd700;
+  font-size: 0.9rem;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: $accent-color;
+}
+
+.card-content h3 {
+  font-size: 1rem;
+  font-weight: 400;
+  color: $text-color-secondary;
+  margin-bottom: 20px;
+}
+
+.achievements {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.achievement {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.achievement-marker {
+  color: $accent-color;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.achievement-text {
+  line-height: 1.5;
+  color: $text-color;
+}
+
+.site-visit {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.site-thumbnail {
+  border-radius: 6px;
+  overflow: hidden;
+  width: 120px;
+  height: 80px;
+  background-color: #333;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.skill {
+  background-color: rgba(110, 143, 255, 0.1);
+  color: $accent-color;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  border: 1px solid rgba(110, 143, 255, 0.2);
+}
+
+.read-more {
+  margin-top: 15px;
+}
+
+.read-more-link {
+  color: $accent-color;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: opacity 0.2s ease;
+}
+
+.read-more-link:hover {
+  opacity: 0.8;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+  
+  .card-content h2 {
+    font-size: 1.3rem;
+  }
+  
+  .skills {
+    gap: 6px;
+  }
+  
+  .skill {
+    font-size: 0.75rem;
+    padding: 3px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .header .subtitle {
+    font-size: 0.95rem;
+  }
+  
+  .card-content {
+    padding: 15px;
+  }
+  
+  .career-card {
+    border-radius: 8px;
+  }
+}
+
+/* Dark mode specific styles */
+@media (prefers-color-scheme: dark) {
+  .career-container {
+    background-color: $background-color;
+  }
+}

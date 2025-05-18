@@ -1,3 +1,28 @@
+:root {
+    --section-spacing: 8rem;
+    /* Consistent vertical spacing between sections */
+    --content-width: 90%;
+    /* Consistent width for all sections */
+    --content-max-width: 1200px;
+    /* Maximum content width */
+    --heading-spacing: 2rem;
+    /* Spacing after headings */
+    --grid-gap: 2rem;
+    /* Consistent grid gap */
+    --border-gradient: linear-gradient(to right, rgba(110, 143, 255, 0.1), rgba(110, 143, 255, 0.5), rgba(110, 143, 255, 0.1));
+    --padding-horizontal: 4rem;
+    /* Horizontal padding */
+    --padding-mobile: 1.5rem;
+    /* Mobile padding */
+}
+
+section {
+    width: 100%;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    margin-bottom: var(--section-spacing);
+}
+
 #hero {
     box-sizing: border-box;
     position: relative;
@@ -6,6 +31,7 @@
     min-height: 86.5vh;
     display: flex;
     align-items: center;
+    margin-bottom: 0;
 
     // justify-content: center;
     .hero {
@@ -36,19 +62,19 @@
             }
 
             p {
-                font-weight: 500;
-                // font-size: 14px;
+                font-weight: 400;
                 line-height: 2;
                 width: 60%;
             }
 
             hr {
                 height: 1px;
+                background: linear-gradient(to right, rgba(110, 143, 255, 0.1), rgba(110, 143, 255, 0.5), rgba(110, 143, 255, 0.1));
+                height: 1px;
                 width: 280px;
                 margin: 1.8em 0;
                 align-self: flex-start;
                 border: none;
-                background-color: rgb(90, 90, 90);
                 // background-image: linear-gradient(to right, orange, green, #0593ff, violet)
             }
         }
@@ -140,18 +166,12 @@
 }
 
 #skills {
-    margin-bottom: 8em;
-
-    @media (max-width:600px) {
-        margin-bottom: 4em;
-    }
-
     .skills {
         text-align: center;
         width: 100%;
 
         &--body {
-            width: 90%;
+            width: var(--content-width);
             margin: auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -175,13 +195,10 @@
     justify-content: center;
 
     .workplace {
-        min-height: 70.5vh;
         width: 100%;
 
         &--body {
             width: 75%;
-            // min-width: 70%;
-            // max-width: 70%;
             margin: auto;
 
 
@@ -216,21 +233,19 @@
             }
 
         }
+
+        &_heading {
+            color: var(--accent-primary);
+        }
     }
 }
 
 #projects {
-    min-height: 97.5vh;
-
-    @media (max-width:600px) {
-        margin-bottom: 4em;
-    }
-
     width: 100%;
 
     .projects {
         &--body {
-            width: 90%;
+            width: var(--content-width);
             margin: auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -239,30 +254,11 @@
 
             p {
                 color: $light;
-                line-height: 1.5;
                 font-size: 14px;
-                font-weight: 600;
-            }
-
-            div {
-                span {
-                    display: inline-block;
-                    margin: 5px;
-                    color: $light;
-                    font-size: 13px;
-                    font-weight: 500;
-
-                    &:first-child {
-                        margin-left: 0;
-                    }
-                }
             }
         }
     }
 }
-
-
-
 
 .view-btn {
     width: 100%;
@@ -278,4 +274,43 @@
 
 #contact {
     min-height: 37.5vh;
+}
+
+hr {
+    border: none;
+    height: 5 hpx;
+    background: linear-gradient(to right, rgba(110, 143, 255, 0.1), rgba(110, 143, 255, 0.5), rgba(110, 143, 255, 0.1));
+}
+
+/* Media Queries */
+@media (max-width: 1100px) {
+    :root {
+        --padding-horizontal: 2rem;
+        --section-spacing: 6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --padding-horizontal: var(--padding-mobile);
+        --section-spacing: 4rem;
+        --grid-gap: 1.5rem;
+        --content-width: 95%;
+
+    }
+
+    section {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    #workplace {
+        .workplace {
+            &--body {
+                width: 95%;
+            }
+
+
+        }
+    }
 }

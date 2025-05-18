@@ -1,0 +1,24 @@
+$breakpoint-large: 1100px;
+$breakpoint-small: 600px;
+$breakpoint-mobile: 768px;
+
+// _mixins.scss
+@mixin responsive($breakpoint) {
+  @if $breakpoint ==large {
+    @media (max-width: $breakpoint-large) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint ==small {
+    @media (max-width: $breakpoint-small) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint ==mobile {
+    @media (max-width: $breakpoint-mobile) {
+      @content;
+    }
+  }
+}

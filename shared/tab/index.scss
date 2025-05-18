@@ -16,7 +16,7 @@
          z-index: 3;
          width: max-content;
          list-style: none;
-         height: 230px;
+         height: 297px;
 
          @media (max-width:600px) {
             display: flex;
@@ -25,6 +25,8 @@
             border-bottom: 1px solid;
             height: fit-content;
             margin-bottom: 2em;
+                width: 100%;
+         overflow-x: auto;
          }
 
          & .tab-item {
@@ -40,10 +42,8 @@
                color: var(--color-secondary);
                font-weight: 600;
                // border-left: 2px solid var(--color-secondary);
-               border-left: 2px solid !important;
-               border-image-slice: 1;
-               border-width: 1px;
-               border-image-source: linear-gradient(to right, orange, green, #0593ff, violet);
+               border-left: 2px solid var(--accent-primary) !important;
+
 
                @media (max-width:600px) {
                   border-left: 0px solid !important;

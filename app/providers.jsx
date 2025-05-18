@@ -1,8 +1,9 @@
 'use client';
-import { Fragment, useEffect, useRef } from 'react';
+import { Fragment, useEffect, useRef} from 'react';
 export function Providers({ children }) {
   const cursorRef = useRef()
-  
+
+  // glowing cursor
   useEffect(() => {
     document.addEventListener('mousemove', (e) => {
       cursorRef.current.setAttribute("style", "top: " + (e.pageY - -3) + "px; left :" + (e.pageX - -3) + "px")
@@ -15,6 +16,8 @@ export function Providers({ children }) {
       }, 500);
     })
   }, []);
+
+
   return (
     <Fragment>
       {children}

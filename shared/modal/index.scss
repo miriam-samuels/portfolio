@@ -46,14 +46,21 @@
 
   &-close_btn {
     position: absolute;
-    right: 1px;
-    top: 5px;
-    background-color: transparent;
-    color: rgb(38, 32, 112);
-    // color: #ffffff;
+    right: 2%;
+    top: 1%;
+    height: 22px;
+    margin: 0;
+    color: var(--accent-primary);
+    width: 22px;
+    min-width: fit-content;
     border: none;
-    margin: 1%;
+    font-size: 16px;
     z-index: 5;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 
   &-box {

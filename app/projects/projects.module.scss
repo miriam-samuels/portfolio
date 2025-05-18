@@ -1,0 +1,221 @@
+@import '../../styles/_animation.scss';
+@import '../../styles/responsive';
+// Variables
+$background-color: #0a0e1a;
+$text-color: #f5f5f7;
+$text-color-secondary: #a8b1cf;
+$accent-color: #6e8fff;
+$card-bg-color: #1e223380;
+$border-color: rgba(255, 255, 255, 0.05);
+$box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+$icon-bg-color: #2d3142;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Base styles
+.container {
+  min-height: 100vh;
+  // font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+// Header styles
+.header {
+  padding: 1.5rem 2rem;
+  @include flex-between;
+  border-bottom: 1px solid $border-color;
+}
+
+
+// Main content styles
+.main {
+  // max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+      @include responsive(small){
+  padding: 3rem 1rem;
+
+  }
+}
+
+.pageTitle {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+    @include responsive(small){
+    margin-bottom: 0.5rem;
+  }
+}
+
+.pageSubtitle {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: $text-color-secondary;
+  font-size: 1.1rem;
+  @include responsive(small){
+    margin-bottom: 0;
+  }
+}
+
+.emoji {
+  font-style: normal;
+}
+
+// Projects grid styles
+.projectsGrid {
+  width: 95%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+  gap: 1.5rem;
+  margin: auto;
+  margin-top: 3rem;
+
+}
+
+// Project card styles
+.projectCard {
+  background-color: $card-bg-color;
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.8s ease-in-out forwards;
+  opacity: 0;
+
+  @for $i from 1 through 11 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.1}s;
+    }
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $box-shadow;
+  }
+
+}
+
+
+.projectMeta {
+  @include flex-between;
+  margin-bottom: 1rem;
+  color: $text-color-secondary;
+  font-size: 0.9rem;
+}
+
+.projectStars {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.projectIcon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  @include flex-center;
+  margin-bottom: 1rem;
+  background-color: $icon-bg-color;
+}
+
+.chakraIcon {
+  background-color: #4ED8E7;
+}
+
+.projectTitle {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.projectDescription {
+  color: $text-color-secondary;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.projectLink {
+  color: $accent-color;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 0.95rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.lightning {
+  color: $accent-color;
+}
+
+// Tech pills styles
+.techPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.techPill {
+  background-color: rgba(110, 143, 255, 0.15);
+  color: $text-color-secondary;
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, rgba(110, 143, 255, 0.1), rgba(110, 143, 255, 0.5), rgba(110, 143, 255, 0.1));
+  margin: 3rem 0;
+
+  @include responsive(small) {
+    margin: 1.5rem 0;
+  }
+}
+
+// Media queries for responsiveness
+@media (max-width: 768px) {
+  .projectsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .pageTitle {
+    font-size: 2rem;
+  }
+}

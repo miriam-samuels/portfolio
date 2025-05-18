@@ -9,7 +9,8 @@
     height: 100%;
     width: 100%;
     border-radius: 10px;
-    background-color: rgb(15, 25, 48);
+    // background-color: rgb(15, 25, 48);
+    background-color:var(--card-bg);
     border: 1px solid rgba(78, 78, 78, 0.358);
     box-shadow: 3px 3px 5px 2px rgb(0, 13, 28);
 
