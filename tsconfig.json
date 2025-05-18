@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "hooks/useClose.jsx"  ],
   "exclude": [
     "node_modules"
   ]

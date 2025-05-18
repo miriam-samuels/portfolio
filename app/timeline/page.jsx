@@ -1,8 +1,7 @@
 "use client";
 import React, { Fragment, useEffect, useRef } from 'react';
 import TheLayout from '../../shared/layout/TheLayout';
-import ImageGallery from '@/shared/gallery';
-
+import ImageGallery from "../../shared/gallery/index";
 // Import SCSS modules
 import style from './timeline.module.scss';
 

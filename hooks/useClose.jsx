@@ -1,11 +1,11 @@
 import {useRef, useEffect} from 'react';
 
-const useClose = (callback: any) => {
-  const ref = useRef<HTMLDivElement>(null);
+const useClose = (callback) => {
+  const ref = useRef(null);
 
   useEffect(() => {
-    const handleClick = (event: MouseEvent) => {
-      if (ref.current && !ref.current.contains(event.target as ChildNode) && callback) {
+    const handleClick = (event) => {
+      if (ref.current && !ref.current.contains(event.target) && callback) {
         callback();
       }
     };

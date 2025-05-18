@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.scss';
 import { createPortal } from 'react-dom';
-import useClose from '@/hooks/useClose';
+import useClose from '../..//hooks/useClose';
 
 function Modal(props) {
   const { heading, sub, children, show, img, type, size, hide, className } = props;
