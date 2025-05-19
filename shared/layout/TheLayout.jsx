@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Loader from '../loader/loader';
 import { usePathname } from 'next/navigation';
 
-const Layout = ({ children }) => {
+const Layout = ({children }) => {
     const pathname = usePathname()
     const [menuOpen, setMenuOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
@@ -12,14 +12,13 @@ const Layout = ({ children }) => {
 
     const navLinks = [
         { title: 'Home', path: '/' },
-        { title: 'Career', path: '/timeline' },
-        { title: 'Projects', path: '/projects' }
+        { title: 'Career', path: '/timeline/' },
+        { title: 'Projects', path: '/projects/' }
     ];
 
     useEffect(() => {
         setLoading(pathname)
     }, [pathname])
-
 
     useEffect(() => {
         // Check if we're on mobile
@@ -57,7 +56,9 @@ const Layout = ({ children }) => {
 
     return (
         <div className={styles.layout + ' cover'}>
+          
             <div className={styles.header}>
+
                 <header>
                     <img src="/images/logo.png" alt="Miriam" className={styles.logo} />
 
@@ -135,7 +136,6 @@ const Layout = ({ children }) => {
                 {children}
             </main>
             <Loader isLoading={pathname !== loading} />
-
         </div>
     );
 };

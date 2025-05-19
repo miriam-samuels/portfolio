@@ -10,7 +10,7 @@
     width: 100%;
     border-radius: 10px;
     // background-color: rgb(15, 25, 48);
-    background-color:var(--card-bg);
+    background-color: var(--card-bg);
     border: 1px solid rgba(78, 78, 78, 0.358);
     box-shadow: 3px 3px 5px 2px rgb(0, 13, 28);
 
@@ -31,9 +31,11 @@
 
         &--title {
             text-align: left;
+
             & h5 {
                 font-size: 1rem;
                 margin: 0;
+                font-weight: 600;
             }
         }
 
@@ -69,6 +71,9 @@
 
             h5 {
                 margin: 10px 0;
+                font-size: 0.95rem;
+                font-weight: 600;
+                line-height: 1.6;
 
                 &.primary {
                     margin: 0 0 10px 0;
@@ -76,9 +81,10 @@
             }
 
             span {
-                font-size: 13px;
-                font-weight: 500;
+                font-size: 0.95rem;
                 display: inline-block;
+                font-weight: 400;
+                line-height: 1.6;
             }
         }
     }

@@ -8,7 +8,7 @@ import style from './timeline.module.scss';
 
 
 // Timeline Item Component
-const TimelineItem = ({ data}) => {
+const TimelineItem = ({ data }) => {
     const classes = [
         style.container,
         style[data.position], // e.g., style.right or style.left
@@ -61,7 +61,7 @@ const TimelineEnd = () => (
     <div className={style.timeline_end}>
         <div className={style.end_marker}>✓</div>
         <h3>6+ Years of Professional Experience</h3>
-        <p>From education to engineering leadership, Miriam has built a diverse career with expertise in frontend (React, Angular), backend (Node.js, Golang), and cloud technologies.</p>
+        <p>From education to engineering and leadership, I have built a diverse career. There is still a lot of room to grow and achieve more but I am grateful for the journey so far.</p>
     </div>
 );
 
@@ -217,8 +217,8 @@ const timelineData = [
         date: 'Sep 2020 - Jan 2023',
         title: 'Tech Educator (EduTech)',
         achievements: [
-            'Mentored 10+ interns on React (100% skill improvement)',
-            'Facilitated interactive panels with industry experts',
+            'Mentored 10+ interns on React which led to a 100% skill improvement.',
+            'Facilitated interactive panels with industry experts to help upcoming engineers navigate the tech space.',
             {
                 type: 'gallery',
                 images: ['/cert/th7.jpeg', '/cert/th6.jpeg', '/cert/th5.jpeg', '/cert/th4.jpeg', '/cert/th3.jpeg', '/cert/th2.jpeg', '/cert/th1.jpeg', '/cert/th8.jpeg']
@@ -233,10 +233,10 @@ const timelineData = [
         date: 'Aug 2021 - Mar 2022',
         title: 'Front End Developer (FinTech)',
         achievements: [
-            'Worked on our Core Banking Application andwas often outsourced to other financial apps',
-            'Implemented tiering system within core Internet banking software',
-            'Enhanced security protocols to limit access based on account size',
-            'Reduced potential fraud incidents by 40%',
+            'Worked on our Core Banking Application and was often outsourced to other financial apps.',
+            'Implemented a tiering system within core Internet banking software which reduced the intensity of potential fraud incidents by 40%.',
+            'Enhanced security protocols to limit access based on account size.',
+            'Implemented new features, maintained old ones and brainstormed on areas for improvement.',
             {
                 type: 'gallery',
                 images: ['/site/banklingo.png', '/site/mm.png'],
@@ -271,12 +271,18 @@ const timelineData = [
         date: 'Jan 2020',
         title: 'Working gigs and making clients happy',
         achievements: [
-            'some of the public sites I have permision to share',
+            'Some of the public sites I have permision to share',
             {
                 type: 'gallery',
                 images: ['/site/bd.png', '/site/oo.png', '/site/isheda.png'],
                 sites: ['https://babasiledaniel.com/', 'https://mideosunyomi.com/', 'https://isheda.com/']
-            }
+            },
+            'I keyed into my creative side and built my first portfolio site',
+            {
+                type: 'gallery',
+                images: ['/site/porto.png',],
+                sites: ['https://miriam-medo.netlify.app/']
+            },
         ],
         skills: ['React', 'CSS', 'RESTful APIs']
     },
@@ -284,7 +290,7 @@ const timelineData = [
         id: 'nutriture',
         position: 'left',
         company: 'Nutriture (HealthTech)',
-        date: 'Jul 2020 - Dec 2020',
+        date: 'Mar 2020 - Dec 2020',
         title: 'Front End Intern',
         achievements: [
             'This was a learning experience. I got to work in a startup',

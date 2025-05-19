@@ -217,7 +217,7 @@ $breakpoint-mobile: 768px;
     }
 
     p {
-      color: #aaaaaa;
+      color: var(--secondary-text);
       max-width: 600px;
       margin: 0 auto;
     }

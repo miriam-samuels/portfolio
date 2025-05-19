@@ -50,7 +50,7 @@ $icon-bg-color: #2d3142;
 
 .pageTitle {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.7rem;
   font-size: 2.5rem;
     @include responsive(small){
     margin-bottom: 0.5rem;
@@ -61,7 +61,7 @@ $icon-bg-color: #2d3142;
   text-align: center;
   margin-bottom: 3rem;
   color: $text-color-secondary;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   @include responsive(small){
     margin-bottom: 0;
   }

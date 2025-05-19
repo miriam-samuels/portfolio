@@ -1,5 +1,4 @@
 'use client';
-import Head from 'next/head';
 import styles from './projects.module.scss';
 import TheLayout from '../../shared/layout/TheLayout';
 import { featuredProjects } from '../../shared/datalist'
@@ -8,11 +7,6 @@ export default function Projects() {
   return (
     <TheLayout>
       <div className={styles.container}>
-        <Head>
-          <title>My Projects</title>
-          <meta name="description" content="Showcase of my developer projects" />
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
         <main className={styles.main}>
           <h1 className={styles.pageTitle}>My Projects</h1>
           <p className={styles.pageSubtitle}>
