@@ -37,10 +37,10 @@ function Landing() {
           <div className="skills--body">
             <WindowCard title="Interests" className="grid-item1">
               <div>
-                <span style={{ display: "block", marginBottom: "20px" }}>• Teaching</span>
-                <span style={{ display: "block", marginBottom: "20px" }}>• Community Building</span>
-                <span style={{ display: "block", marginBottom: "20px" }}>• Tennis</span>
-                <span style={{ display: "block", marginBottom: "20px" }}>• Video Games</span>
+                <span style={{ display: "block", marginBottom: "20px" }}>Teaching</span>
+                <span style={{ display: "block", marginBottom: "20px" }}>Community Building</span>
+                <span style={{ display: "block", marginBottom: "20px" }}>Tennis</span>
+                <span style={{ display: "block", marginBottom: "20px" }}>Video Games</span>
               </div>
             </WindowCard>
 
@@ -54,27 +54,33 @@ function Landing() {
                 <span>Tailwind</span>
               </div>
               <div className="hard-skill">
-                <h5 className="primary">Backend</h5>
+                <h5 className="primary">Backend Technologies</h5>
                 <span>Node</span>
                 <span>Golang</span>
                 <span>Loopback</span>
-                <span>Postgres</span>
+                 <span>Postgres</span>
                 <span>mySql</span>
                 <span>Redis</span>
-              </div>
-              <div className="hard-skill">
-                <h5>Exposed to</h5>
                 <span>Docker</span>
                 <span>Kubernetes</span>
               </div>
+              {/* <div className="hard-skill">
+                <h5>Others</h5>
+                   <span>Postgres</span>
+                <span>mySql</span>
+                <span>Redis</span>
+                <span>Docker</span>
+                <span>Kubernetes</span>
+              </div> */}
             </WindowCard>
 
             <WindowCard title="Soft Skills" className="grid-item3">
               <div>
-                <span style={{ display: "block", marginBottom: "20px" }}>• Public Speaking</span>
-                <span style={{ display: "block", marginBottom: "20px" }}>• Time management</span>
-                <span style={{ display: "block", marginBottom: "20px" }}>• Communication</span>
-                <span style={{ display: "block", marginBottom: "20px" }}>• Teamwork</span>
+                <span style={{ display: "block", marginBottom: "20px" }}>Public Speaking</span>
+                <span style={{ display: "block", marginBottom: "20px" }}>Leadership</span>
+                <span style={{ display: "block", marginBottom: "20px" }}>Communication</span>
+                <span style={{ display: "block", marginBottom: "20px" }}>Quick Adaptability</span>
+                <span style={{ display: "block", marginBottom: "20px" }}>Problem Solving</span>
               </div>
             </WindowCard>
           </div>
